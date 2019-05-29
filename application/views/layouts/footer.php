@@ -121,7 +121,24 @@ else
 }  
 });
 
+$(".MAQ").click(function(){
+  //alert("click");
+  var estado = $(this).attr("estado");
+  if(estado == 1){
+    $(this).removeClass("offPC");
+  $(this).removeClass("onPC");
 
+  $(this).addClass("offPC");
+  $(this).attr("estado","0");
+  }else{
+    $(this).removeClass("offPC");
+  $(this).removeClass("onPC");
+
+  $(this).addClass("onPC");
+  $(this).attr("estado","1");
+  }
+
+});
 
 </script>
 

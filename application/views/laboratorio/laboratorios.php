@@ -1,4 +1,16 @@
 <!-- page content -->
+<style>
+.onPC{
+  background-color: #A1F378;
+  color:#fff;
+  border-radius:5px;
+}
+.offPC{
+  background-color: #E99F9F;
+  color:#fff;
+  border-radius:5px;
+}
+</style>
 <div class="right_col" role="main">
   <div class="">
 
@@ -17,9 +29,9 @@
             <?php foreach(range(1,5) as $x):?>
               <div class="form-row">
                       <div class="form-group col-md-1 col-sm-1 col-xs-1">
-                        <div class="">
+                        <div class="MAQ onPC" estado="1">
                           <center><div class=""> <img src="https://pngimage.net/wp-content/uploads/2018/06/icone-informatique-png-1.png" alt="" width="40" height="40"></div></center>                
-                          <center><h4><a href="#">PCz-<?php echo $n++;?></a></h4></center>
+                          <center><h4><label href="#">PCz-<?php echo $n++;?></label></h4></center>
                         </div>
                       </div>              
               </div>
@@ -35,9 +47,9 @@
              <?php foreach(range(1,4) as $x):?>
               <div class="form-row">
                       <div class="form-group col-md-1 col-sm-1 col-xs-1">
-                        <div class="">
+                        <div class="MAQ offPC" estado="0">
                           <center><div class=""> <img src="https://pngimage.net/wp-content/uploads/2018/06/icone-informatique-png-1.png" alt="" width="40" height="40"></div></center>                
-                          <center><h4><a href="#">PC-<?php echo $n++;?></a></h4></center>
+                          <center><h4><label href="#">PC-<?php echo $n++;?></label></h4></center>
                         </div>
                       </div>              
               </div>
@@ -54,7 +66,9 @@
     </div>
   </div>
 </div>
+<script>
 
+</script>
 <!-- /page content -->
 
 
