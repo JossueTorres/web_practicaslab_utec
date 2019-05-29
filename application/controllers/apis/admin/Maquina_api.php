@@ -19,12 +19,12 @@ class Maquina_api extends REST_Controller
     public function listMaquinas_post()
     {
         //ponemos lo que venga de los filtros;
-        $codlab = $this->input->post("lab");
-        $fil = $this->input->post("fil");
-        $col = $this->input->post("col");
-        $est = $this->input->post("est");
-        $ere = $this->input->post("ere");
-        $ali = $this->input->post("ali");
+        $codlab = $this->post("lab");
+        $fil = $this->post("fil");
+        $col = $this->post("col");
+        $est = $this->post("est");
+        $ere = $this->post("ere");
+        $ali = $this->post("ali");
         $data = array(
             'lab' => (int)$codlab,
             'fil' => (int)$fil,
@@ -46,22 +46,22 @@ class Maquina_api extends REST_Controller
     public function guardarDatos_post()
     {
         //recibir los names de input desde la vista por post
-        $c1 = $this->input->post("l");
-        $c2 = $this->input->post("f");
-        $c3 = $this->input->post("c");
+        $c1 = $this->post("l");
+        $c2 = $this->post("f");
+        $c3 = $this->post("c");
 
-        $codlab = $this->input->post("lab");
-        $fil = $this->input->post("fil");
-        $col = $this->input->post("col");
-        $est = $this->input->post("est");
-        $ere = $this->input->post("ere");
-        $ali = $this->input->post("ali");
+        $codlab = $this->post("lab");
+        $fil = $this->post("fil");
+        $col = $this->post("col");
+        $est = $this->post("est");
+        $ere = $this->post("ere");
+        $ali = $this->post("ali");
 
         //mandar los input a arreglo y campos de la bd
         $codigo = array(
-            'lab' => (int)$c1,
-            'fil' => (int)$c2,
-            'col' => (int)$c3,
+            'l' => (int)$c1,
+            'f' => (int)$c2,
+            'c' => (int)$c3,
         );
         $data = array(
             'lab' => (int)$codlab,
@@ -70,6 +70,9 @@ class Maquina_api extends REST_Controller
             'est' => $est,
             'ere' => $ere,
             'ali' => $ali,
+            'l' => (int)$c1,
+            'f' => (int)$c2,
+            'c' => (int)$c3,
         );
         if ($this->MaquinaModel->guardarDatos($codigo, $data))
             $this->response(array('status' => 'Registro se guardo correctamente'));
@@ -84,20 +87,23 @@ class Maquina_api extends REST_Controller
     function borrarDatos_post()
     {
         //recibir los names de input desde la vista por post
-        $codlab = $this->input->post("lab");
-        $fil = $this->input->post("fil");
-        $col = $this->input->post("col");
-        $est = $this->input->post("est");
-        $ere = $this->input->post("ere");
-        $ali = $this->input->post("ali");
+        $c1 = $this->post("l");
+        $c2 = $this->post("f");
+        $c3 = $this->post("c");
+        $est = $this->post("est");
+        $ere = $this->post("ere");
+        $ali = $this->post("ali");
         //mandar los input a arreglo y campos de la bd
         $data = array(
-            'lab' => (int)$codlab,
-            'fil' => (int)$fil,
-            'col' => (int)$col,
+            'lab' => 0,
+            'fil' => 0,
+            'col' => 0,
             'est' => $est,
             'ere' => $ere,
             'ali' => $ali,
+            'l' => (int)$c1,
+            'f' => (int)$c2,
+            'c' => (int)$c3,
         );
 
         if ($this->MaquinaModel->borrarDatos($data))

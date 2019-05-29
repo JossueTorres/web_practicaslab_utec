@@ -94,6 +94,11 @@ $route['TAccion/guardarDatos']['POST'] = 'apis/admin/TipoAccion_api/guardarDatos
 $route['TAccion/borrarDatos']['POST'] = 'apis/admin/TipoAccion_api/borrarDatos';
 
 //Crud Usuario
+$route['TUsuario/Listado']['POST'] = 'apis/admin/TipoUsuario_api/listTiposUsuarios';
+$route['TUsuario/guardarDatos']['POST'] = 'apis/admin/TipoUsuario_api/guardarDatos';
+$route['TUsuario/borrarDatos']['POST'] = 'apis/admin/TipoUsuario_api/borrarDatos';
+
+//Crud Usuario
 $route['Usuario/Listado']['POST'] = 'apis/admin/Usuario_api/index';
 $route['Usuario/guardarDatos']['POST'] = 'apis/admin/Usuario_api/guardarDatos';
 $route['Usuario/borrarDatos']['POST'] = 'apis/admin/Usuario_api/borrarDatos';
