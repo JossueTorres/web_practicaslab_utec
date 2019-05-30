@@ -103,6 +103,15 @@ class Laboratorio_api extends REST_Controller
             $this->response(array('status' => 'fallo'));
     }
 
+    public function Practicas_get(){
+        $list= $this->LaboratorioModel->practicasDisponibles();
+        if(!is_null($list)){
+            $this->response(array('resp' => $list),200);
+        }else {
+            $this->response(array('resp'=>'No hay registros'),404);
+        }
+    }
+
     // public function crearActualizarMaquinas($codlab)
     // {
     //     $data = array(
