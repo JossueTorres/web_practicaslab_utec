@@ -15,38 +15,48 @@ class LaboratorioEncargado_api extends REST_Controller
         $this->load->model("m_admin/LaboratorioEncargadoModel");
     }
 
-    public function listLaboratoriosEncargados_get()
+    public function listLaboratoriosEncargados_post()
     {
         //ponemos lo que venga de los filtros;    
-        $codenc = 0;   
-        $codlab = 0;   
-        $est = '';        
+        $enc = $this->post("enc");
+        $lab = $this->post("lab");
+        $est = $this->post("est");
         $data = array(
-            'codenc' => $codenc,
-            'codlab' => $codlab, 
-            'est' => $est,          
+            'enc' => (int)$enc,
+            'lab' => (int)$lab,
+            'est' => $est,
+            'e' => 0,
+            'l' => 0,
         );
         $list = $this->LaboratorioEncargadoModel->getListalaboratoriosEncargados($data);
-        if(!is_null($list)){
-            $this->response(array('resp' => $list),200);
-        }else {
+        if (!is_null($list)) {
+            $this->response(array('resp' => $list), 200);
+        } else {
 
-            $this->response(array('resp'=>'No hay registros'),404);
-
+            $this->response(array('resp' => 'No hay registros'), 404);
         }
     }
 
     public function guardarDatos_post()
     {
         //recibir los names de input desde la vista por post
-        $codenc = $this->post("ddlcodenc");
-        $codlab = $this->post("ddlcodlab");
-        $est = $this->post("txtEstado");
-        $id = array('codenc' => $codenc, 'codlab' => $codlab,);
-        $data = array('codenc' => $codenc,
-            'codlab' => $codlab, 
-            'est' => $est,           
-        );            
+        $e = $this->post("e");
+        $l = $this->post("l");
+
+        $codenc = $this->post("enc");
+        $codlab = $this->post("lab");
+        $est = $this->post("est");
+        $id = array(
+            'e' => $codenc,
+            'l' => $codlab,
+        );
+        $data = array(
+            'codenc' => $codenc,
+            'codlab' => $codlab,
+            'est' => $est,
+            'e' => $e,
+            'l' => $l,
+        );
         if ($this->LaboratorioEncargadoModel->guardarDatos($id, $data))
             $this->response(array('status' => 'Registro se guardo correctamente'));
         else
@@ -57,13 +67,14 @@ class LaboratorioEncargado_api extends REST_Controller
     // implementado  por si algun requerimeinto lo america utilizar
     function borrarDatos_post()
     {
-        $codenc = $this->post("ddlcodenc");
-        $codlab = $this->post("ddlcodlab");
-
-        $id = array('codenc' => $codenc, 'codlab' => $codlab,);
-        $data = array('codenc' => $codenc,
-            'codlab' => $codlab, 
+        $codenc = $this->post("e");
+        $codlab = $this->post("l");
+        $data = array(
+            'codenc' => 0,
+            'codlab' => 0,
             'est' => '',
+            'e' => $codenc,
+            'l' => $codlab,
         );
         if ($this->LaboratorioEncargadoModel->borrarDatos($data))
             $this->response(array('status' => 'Eliminado con exito'));

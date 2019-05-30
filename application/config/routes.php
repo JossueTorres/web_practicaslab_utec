@@ -79,7 +79,7 @@ $route['Laboratorio/guardarDatos']['POST'] = 'apis/admin/Laboratorio_api/guardar
 $route['Laboratorio/borrarDatos']['POST'] = 'apis/admin/Laboratorio_api/borrarDatos';
 
 //Crud Encargado de Laboratorio Pivote
-$route['EncargadoLab/Listado']['POST'] = 'apis/admin/LaboratorioEncargado_api/index';
+$route['EncargadoLab/Listado']['POST'] = 'apis/admin/LaboratorioEncargado_api/listLaboratoriosEncargados';
 $route['EncargadoLab/guardarDatos']['POST'] = 'apis/admin/LaboratorioEncargado_api/guardarDatos';
 $route['EncargadoLab/borrarDatos']['POST'] = 'apis/admin/LaboratorioEncargado_api/borrarDatos';
 

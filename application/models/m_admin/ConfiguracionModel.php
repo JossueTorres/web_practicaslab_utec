@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ConfiguracionModel extends CI_Model {
 
-	public function getListaConfiguracion($data = array('cod'=>0,'codlab'=>0,'dias'=>'','fini'=>'','ffin'=>'')) { 
+	public function getListaConfiguracion($data) { 
         $result = $this->db->query("CALL proc_crud_configuracion(1,?,?,?,?,?)", $data);
         return $result->result();
     }
