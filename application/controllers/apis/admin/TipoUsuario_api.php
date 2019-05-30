@@ -15,13 +15,14 @@ class TipoUsuario_api extends REST_Controller
         $this->load->model("m_admin/TipoUsuarioModel");
     }
 
-    public function listTiposUsuarios_get()
+    public function listTiposUsuarios_post()
     {
         //ponemos lo que venga de los filtros;
-        $nombre_fil = '';        
+        $codigo = $this->input->post("cod");
+        $nombre = $this->input->post("nom");       
         $data = array(
-            'cod' => 0,
-            'nom' => $nombre_fil,            
+            'cod' => (int)$codigo,
+            'nom' => $nombre,            
         );
         $list = $this->TipoUsuarioModel->getListaTipoUsuarios($data);
         if(!is_null($list)){
@@ -36,12 +37,12 @@ class TipoUsuario_api extends REST_Controller
     public function guardarDatos_post()
     {
         //recibir los names de input desde la vista por post
-        $codigo = $this->input->post("txtCodigo");
-        $nombre = $this->input->post("txtNombre");
+        $codigo = $this->post("cod");
+        $nombre = $this->post("nom");
 
         //mandar los input a arreglo y campos de la bd
         $data = array(
-            'cod' => $codigo,
+            'cod' => (int)$codigo,
             'nom' => $nombre,
         );
         if ($this->TipoUsuarioModel->guardarDatos($codigo, $data))
@@ -52,14 +53,14 @@ class TipoUsuario_api extends REST_Controller
 
     // este verbo si hace un delete como tal en la bd, en nuestros cruds no se va a eliminar info pero dejo el metodo de ejemplo
     // implementado  por si algun requerimeinto lo america utilizar
-    function borrarDatos_delete()
+    function borrarDatos_post()
     {
         //recibir los names de input desde la vista por post
-        $codigo = $this->input->delete("txtCodigo");
+        $codigo = $this->post("cod");
 
         //mandar los input a arreglo y campos de la bd
         $data = array(
-            'cod' =>  $codigo,
+            'cod' =>  (int)$codigo,
             'nom' => '',
         );
 

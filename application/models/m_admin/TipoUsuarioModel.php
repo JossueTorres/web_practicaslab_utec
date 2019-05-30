@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TipoUsuarioModel extends CI_Model {
 
-	public function getListaTipoUsuarios($data = array('cod'=>0,'nom'=>'')) { 
+	public function getListaTipoUsuarios($data) { 
         $result = $this->db->query("CALL proc_crud_tipo_usuario(1,?,?)", $data);
         return $result->result();
     }

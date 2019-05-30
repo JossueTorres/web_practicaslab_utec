@@ -8,7 +8,6 @@ class Auth extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-	
 	}
 
 	//funcion principal
@@ -16,7 +15,7 @@ class Auth extends CI_Controller
 	{
 		//verificar la session de usuario
 
-			$this->load->view('login');
+		$this->load->view('login');
 	}
 
 	public function login()
@@ -24,35 +23,27 @@ class Auth extends CI_Controller
 		//Temporal
 
 		$user = $this->input->post("usuario");
-	
-		if($user=="estudiante" || $user=="lab" || $user=="admin")
-			$login=true;		
-		else 
-			 $login=false;
-		
+
+		if ($user == "estudiante" || $user == "lab" || $user == "admin")
+			$login = true;
+		else
+			$login = false;
+
 		//si el nombre de usuario ingresado es correcto enviarlo al controlador Dashboard
-		if($login==true){
+		if ($login == true) {
 			$data  = array(
 				'usuario' => $user,
 				'login' => $login
 			);
 			$this->session->set_userdata($data);
-			$user=  $this->session->userdata("usuario");
-			if($user=="estudiante")
+			$user =  $this->session->userdata("usuario");
+			if ($user == "estudiante")
 				redirect(base_url() . "c_estudiante/Inicio");
-			else if($user=="admin")
-			redirect(base_url() . "c_admin/Inicio");
-			else if($user=="lab")
-			redirect(base_url() . "c_laboratorio/Inicio");
-			
-		}
-		else
+			else if ($user == "admin")
+				redirect(base_url() . "c_admin/Inicio");
+			else if ($user == "lab")
+				redirect(base_url() . "c_laboratorio/Inicio");
+		} else
 			redirect(base_url());
-	
-
 	}
-
-
 }
-
-
