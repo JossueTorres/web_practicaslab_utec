@@ -4,9 +4,16 @@
   background-color: #A1F378;
   color:#fff;
   border-radius:5px;
+  cursor:pointer;
 }
 .offPC{
   background-color: #E99F9F;
+  color:#fff;
+  border-radius:5px;
+  cursor:pointer;
+}
+.enabledPC{
+  background-color: #E5D7D7;
   color:#fff;
   border-radius:5px;
 }
@@ -44,7 +51,7 @@
                         </div>
                       </div>              
               </div>
-             <?php foreach(range(1,4) as $x):?>
+             <?php foreach(range(1,5) as $x):?>
               <div class="form-row">
                       <div class="form-group col-md-1 col-sm-1 col-xs-1">
                         <div class="MAQ offPC" estado="0">
