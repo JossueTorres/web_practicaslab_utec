@@ -185,6 +185,12 @@ function getCookie(cname) {
   }
   return "";
 }
+
+$(".btnOJOlab").click(function(){
+var cod = $(this).attr("codigo");
+$(".ddl_buscar_lab_mapa").val(cod);
+$(".btn_buscar_lab_mapa").click();
+});
 </script>
 
 

@@ -44,7 +44,7 @@
       </div>
     </form>
     <!-- form oculto para cambiar el estado de la maquina -->
-    <form action="<?php echo base_url('c_laboratorio/ControlLaboratorio/CambioEstadoMaquina'); ?>" method="POST">
+    <form class=" hidden" action="<?php echo base_url('c_laboratorio/ControlLaboratorio/CambioEstadoMaquina'); ?>" method="POST">
       <div class="col-md-4 col-sm-12">
       <input name="txtcodmaq_lab" type="text" id="txtcodmaq_lab" class="form-control">
       <input name="txtcodmaq_fil" type="text" id="txtcodmaq_fil" class="form-control">

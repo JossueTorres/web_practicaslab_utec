@@ -24,8 +24,8 @@
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-users"></i></div>
                   <div class="count">0</div>
-                  <h3>Usuarios</h3>
-                 <p> <a href="" class="small-box-footer">Ver Practicas <i class="fa fa-arrow-circle-right"></i></a></p>
+                  <h3>Practicas</h3>
+                 <p> <a href="<?php echo base_url('c_admin/ControlLaboratorio/index'); ?>" class="small-box-footer">Ver Practicas <i class="fa fa-arrow-circle-right"></i></a></p>
 
                 </div>
               </div>
@@ -33,44 +33,22 @@
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-users"></i></div>
                   <div class="count">0</div>
-                  <h3>Usuarios</h3>
-                 <p> <a href="" class="small-box-footer">Ver Practicas <i class="fa fa-arrow-circle-right"></i></a></p>
+                  <h3>Disponibles</h3>
+                 <p> <a href="<?php echo base_url('c_admin/ControlLaboratorio/index'); ?>" class="small-box-footer">Ver Disponibles <i class="fa fa-arrow-circle-right"></i></a></p>
 
                 </div>
               </div>              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-users"></i></div>
                   <div class="count">0</div>
-                  <h3>Usuarios</h3>
-                 <p> <a href="" class="small-box-footer">Ver Practicas <i class="fa fa-arrow-circle-right"></i></a></p>
+                  <h3>Laboratorios</h3>
+                 <p> <a href="<?php echo base_url('c_admin/ControlLaboratorio/index'); ?>" class="small-box-footer">Ver Laboratorios <i class="fa fa-arrow-circle-right"></i></a></p>
 
                 </div>
-              </div>              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-users"></i></div>
-                  <div class="count">0</div>
-                  <h3>Usuarios</h3>
-                 <p> <a href="" class="small-box-footer">Ver Practicas <i class="fa fa-arrow-circle-right"></i></a></p>
-
-                </div>
-              </div>
-              prueba a servidor
+              </div> 
 
             </div>
 
-                      <?php 
-                      $nick = "ede";
-                      echo "
-                      <td width='53'>
-                       
-                         <a href= 'javascript:abrirventana('".$nick."')'>
-                            
-                           <img src='images/lupa.jpg' border='0' width='23'>
-                         
-                         </a>
-                      </td>";
-                      
-                      ?>
                   </div>
                 </div>
               </div>
