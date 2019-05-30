@@ -36,54 +36,17 @@
                     </tr>
                   </thead>
               
-                    <tbody>          
+                    <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Jorge Alberto</td>
-                            <td>Acevedo</td>
-                            <td>jorge.acevedo@mail.utec.edu.sv</td>
-                            <td>MASCULINO</td>
-    
-                            
-                            <td>
-                            <div class="botonesList">
-                  
-                              <button class="btn btn-sm btn-warning" type="button" data-toggle="modal" data-target="#modal-encargado-editar" ><span class="fa fa-pencil"></span></button> 
-                              <button class="btn btn-sm btn-info" type="button"><span class="fa fa-key"></span></button> 
-                              <button class="btn btn-sm btn-danger" type="button"><span class="fa fa-remove"></span></button> 
-                            </div>              
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td>Carlos Alberto</td>
-                            <td>Sanchez</td>
-                            <td>carlos.sanchez@mail.utec.edu.sv</td>
-                            <td>MASCULINO</td>
-            
-                            
-                            <td>
-                            <div class="botonesList">
-                  
-                              <button class="btn btn-sm btn-warning" type="button" data-toggle="modal" data-target="#modal-encargado-editar" ><span class="fa fa-pencil"></span></button> 
-                              <button class="btn btn-sm btn-info" type="button"><span class="fa fa-key"></span></button> 
-                              <button class="btn btn-sm btn-danger" type="button"><span class="fa fa-remove"></span></button> 
-                            </div>              
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
                             <td>Jorge Alonso</td>
                             <td>Rodriguez</td>
                             <td>jorge.rodriguez@mail.utec.edu.sv</td>
                             <td>MASCULINO</td>                   
                             <td>
-                            <div class="botonesList">
-                  
+                            <div class="botonesList">                
                               <button class="btn btn-sm btn-warning" type="button" data-toggle="modal" data-target="#modal-encargado-editar" ><span class="fa fa-pencil"></span></button> 
-                              <button class="btn btn-sm btn-info" type="button"><span class="fa fa-key"></span></button> 
+                              <button class="btn btn-sm btn-info" type="button" data-toggle="modal" data-target="#modal-permisos" ><span class="fa fa-key"></span></button> 
                               <button class="btn btn-sm btn-danger" type="button"><span class="fa fa-remove"></span></button> 
                             </div>              
                             </td>
@@ -298,3 +261,146 @@
     </div>
     <!-- /.modal -->
 
+ <div class="modal fade" id="modal-permisos">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">ASIGNAR PERMISOS A ENCARGADO</h4>
+                </div>
+                <div class="modal-body">            
+                <form name="frm" action="" method="POST">
+                      <div class="form-row">
+                        <div class="form-group col-md-4 col-sm-3 col-xs-12">
+                          <label>Permiso</label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>Crear</label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>Editar</label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>Eliminar</label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>Consultar</label>
+                        </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="form-group col-md-4 col-sm-3 col-xs-12">
+                          <label>Edificios</label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-4 col-sm-3 col-xs-12">
+                          <label>Laboratorios</label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-4 col-sm-3 col-xs-12">
+                          <label>Praticas</label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-4 col-sm-3 col-xs-12">
+                          <label>Encargados</label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-3 col-xs-12">
+                           <label>Estado </label><br/>
+                          <label>
+                            <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>                                              
+                          </div>
+                      </div>
+                    </form>                                     
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
