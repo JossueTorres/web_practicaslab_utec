@@ -123,23 +123,68 @@ else
 
 $(".MAQ").click(function(){
   //alert("click");
-  var estado = $(this).attr("estado");
-  if(estado == 1){
-    $(this).removeClass("offPC");
-  $(this).removeClass("onPC");
+  var codlab = $(this).attr("codlab");
+  var codfil = $(this).attr("codfil");
+  var codcol = $(this).attr("codcol");
 
-  $(this).addClass("offPC");
-  $(this).attr("estado","0");
-  }else{
-    $(this).removeClass("offPC");
+  $("#txtcodmaq_lab").val(codlab);
+  $("#txtcodmaq_fil").val(codfil);  
+  $("#txtcodmaq_col").val(codcol);
+
+
+  var estado = $(this).attr("estado");
+  $(this).removeClass("offPC");
   $(this).removeClass("onPC");
+  $(this).removeClass("enabledPC");
+console.log($("#ckb_maq_no_dis").prop("checked"))
+  if($("#ckb_maq_no_dis").prop("checked")){
+    $(this).addClass("enabledPC");
+  $(this).attr("estado","I");
+  
+  }else{
+  if(estado == "D"){
+  $(this).addClass("offPC");
+  $(this).attr("estado","O");
+  }else{
 
   $(this).addClass("onPC");
-  $(this).attr("estado","1");
+  $(this).attr("estado","D");
   }
-
+}
+$("#txtmaqEstado").val( $(this).attr("estado"));
 });
+$(".btn_buscar_lab_mapa").click(function(e){
+  //e.preventDefault();
+  var cod = $(".ddl_buscar_lab_mapa").val();
+  //alert(cod);
+  setCookie("labBuscar",cod)
+  ///$(this).unbind('submit').submit();
+});
+//alert(getCookie("labBuscar"));
 
+function setCookie(cname, cvalue) {
+  document.cookie = cname + "=" + cvalue ;
+}
+var co_LabBuscar = getCookie("labBuscar");
+if(co_LabBuscar == ""){co_LabBuscar = 1};
+
+$(".ddl_buscar_lab_mapa").val(co_LabBuscar);
+$("#Nombre_lab").text("Administrar "+$(".ddl_buscar_lab_mapa option:selected").text())
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 </script>
 
 
