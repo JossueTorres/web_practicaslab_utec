@@ -22,10 +22,14 @@ class Auth extends CI_Controller
 	{
 		//Temporal
 
-		$user = $this->input->post("usuario");
+		$user = $this->input->post("txtUsr");
+		$pass = $this->input->post("txtPass");
 
-		if ($user == "estudiante" || $user == "lab" || $user == "admin")
-			$login = true;
+		if ($user == "estudiante" || $user == "lab" || $user == "admin"){
+			if ($pass == "123") {
+				$login = true;
+			}			
+		}					
 		else
 			$login = false;
 
@@ -45,5 +49,13 @@ class Auth extends CI_Controller
 				redirect(base_url() . "c_laboratorio/Inicio");
 		} else
 			redirect(base_url());
+	}
+
+	public function logout()
+	{
+		session_start();
+		session_unset();
+		session_destroy();
+		redirect(base_url('/Login'));
 	}
 }
