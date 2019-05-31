@@ -24,44 +24,50 @@
           <div class="x_content">
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-edificio"><span class="fa fa-plus"></span> Agregar Edificio</button>
+                <button type="button" class="btn btn-primary" onclick="javascript: cleanFields();mostrarModal();"><span class="fa fa-plus"></span>&nbsp;Agregar Edificio</button>
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="table-responsive">
-                  <table class="table table-striped table-hover" id="tabla">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>CODIGO</th>
-                        <th>NOMBRE</th>
-                        <th>ACRÓNIMO</th>
-                        <th>
-                          <div class="botonesList">ACCION</div>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php if (!empty($resp)) {
-                        foreach ($resp as $ed) { ?>
-                          <tr>
-                            <td><?php echo $ed->edf_codigo; ?></td>
-                            <td><?php echo $ed->edf_nombre; ?></td>
-                            <td><?php echo $ed->edf_codigo; ?></td>
-                            <td class="text-center">
-                              <a href="#" name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="edit('<?php echo $ed->edf_codigo ?>','<?php echo $ed->edf_nombre ?>','<?php echo $ed->edf_acronimo ?>','<?php echo $ed->edf_estado ?>');">Modificar</a>
-                            </td>
-                            <td>
-                              <input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php echo $ed->edf_codigo; ?>" />
-                            </td>
-                          </tr>
-                        <?php }
-                    }  ?>
-                    </tbody>
-                  </table>
-                </div>
+                <form id='frm_del_edificio' name="frmdel" action="<?php echo base_url('Edificios/Borrar'); ?>" method="POST">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-hover" id="tabla">
+                      <thead>
+                        <tr>
+                          <th>CODIGO</th>
+                          <th>NOMBRE</th>
+                          <th>ACRÓNIMO</th>
+                          <th>ESTADO</th>
+                          <th>MODIFICAR</th>
+                          <th>
+                            <div class="center-block"><input type="checkbox" name="todo" id="todo" class="checkbox" />&nbsp;<button class="btn btn-danger btn-xs"  onclick="return confimar('borrar');">Borrar</button></div>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php if (!empty($resp)) {
+                          foreach ($resp as $ed) { ?>
+                            <tr>
+                              <td><?php echo $ed->edf_codigo; ?></td>
+                              <td><?php echo $ed->edf_nombre; ?></td>
+                              <td><?php echo $ed->edf_acronimo; ?></td>
+                              <td><label class="label <?php if ($ed->edf_estado == 'A') echo 'label-success';
+                                                      else echo 'label-danger'; ?>"><?php if ($ed->edf_estado == 'A') echo 'Habilitado';
+                                                                                      else echo 'Deshabilitado'; ?></label></td>
+                              <td class="text-center">
+                                <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="edit('<?php echo $ed->edf_codigo ?>','<?php echo $ed->edf_nombre ?>','<?php echo $ed->edf_acronimo ?>','<?php echo $ed->edf_estado ?>')">Modificar</a>
+                              </td>
+                              <td>
+                                <input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php echo $ed->edf_codigo; ?>" />
+                              </td>
+                            </tr>
+                          <?php }
+                      }  ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -78,65 +84,123 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">FORMULARIO DE EDIFICIO</h4>
+        <h4 class="modal-title">EDIFICIO</h4>
       </div>
       <div class="modal-body">
-        <form id='frm_edificio' name="frm" action="" method="POST">
+        <form id='frm_edificio' name="frm" action="<?php echo base_url('Edificios/Guardar'); ?>" method="POST">
+          <input type="text" name="codedf" id="codedf" class="codedf hidden" value="0">
           <div class="form-row">
-
             <div class="form-group col-md-6 col-sm-6 col-xs-12">
-              <label>Codigo</label>
-              <input type="text" class="form-control col-md-7 col-xs-12" id="txtCodigo" name="txtCodigo" placeholder="Ingresar Codigo" required="">
-            </div>
-
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-12 col-sm-12 col-xs-12">
               <label>Nombre</label>
-              <input type="text" class="form-control col-md-7 col-xs-12" id="txtNombre" name="txtNombre" placeholder="Ingresar Nombre" required="">
+              <input type="text" id="txtNom" name="txtNom" class="form-control col-md-7 col-xs-12 txtNom" placeholder="Ingrese el código" required="">
             </div>
           </div>
-
           <div class="form-row">
-            <div class="form-group col-md-12 col-sm-12 col-xs-12">
-              <label>Acronimo</label>
-              <input type="text" class="form-control col-md-7 col-xs-12" id="txtAcronimo" name="txtAcronimo" placeholder="Ingresar Acronimo" required="">
+            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+              <label>Acrónimo</label>
+              <input type="text" id="txtAcr" name="txtAcr" class="form-control col-md-7 col-xs-12 txtAcr" placeholder="Ingresar Acronimo" required="">
             </div>
           </div>
-
           <div class="form-row">
-            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group col-md-6 col-sm-6 col-xs-12">
               <label>Estado </label><br />
-              <label>
-                <input type="checkbox" class="js-switch" checked name="estado" /> Activo
+              <label>                
+                <select name="ddlEst" id="ddlEst" class="form-control ddlEst">
+                  <option value="A">Habilitado</option>
+                  <option value="I">Deshabilitado</option>
+                </select>
               </label>
             </div>
           </div>
-
           <div class="form-row">
             <div class="form-group col-md-12 col-sm-12 col-xs-12">
               <div class="ln_solid"></div>
             </div>
           </div>
-
           <div class="form-row">
             <div class="form-group col-md-12 col-sm-12 col-xs-12">
-
               <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-primary">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-
-
+              <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button> -->
             </div>
           </div>
         </form>
       </div>
-
     </div>
     <!-- /.modal-content -->
   </div>
   <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+<script>
+  function mostrarModal() {
+    $("#modal-edificio").modal('show');
+  };
 
+  function cleanFields() {
+    $('.codedf').attr("value", "0");
+    $('.txtNom').val('');
+    $('.txtAcr').val('');
+    $('.ddlEst').val("A");
+  };
 
-<script src="<?php echo base_url(); ?>assets/build/ajaxList/tipousuarios.js"></script>
+  function edit(c, n, a, e) {
+    $('.codedf').attr("value", c);
+    $('.txtNom').val(n);
+    $('.txtAcr').val(a);
+    $('.ddlEst').val(e);
+    mostrarModal();
+  };
+
+  function confimar(text) {
+		return confirm("¿Esta seguro que desea: " + text + " los registros seleccionados?");
+	};
+
+  $(document).ready(function() {
+
+    // $('.checkbox').on('click', function() {
+    //   if ($('.checkbox:checked').length == $('.checkbox').length) {
+    //     $('#todo').prop('checked', true);
+    //   } else {
+    //     $('#todo').prop('checked', false);
+    //   }
+    // });
+
+    $('#tabla').DataTable({
+      "language": {
+        "lengthMenu": "Mostrar _MENU_ registros por pagina",
+        "zeroRecords": "No se encontraron resultados en su busqueda",
+        "searchPlaceholder": "Buscar registros",
+        "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
+        "infoEmpty": "No existen registros",
+        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "search": "Buscar:",
+        "paginate": {
+          "first": "Primero",
+          "last": "Último",
+          "next": "Siguiente",
+          "previous": "Anterior"
+        },
+      }
+    });
+
+    $('#todo').on('click', function() {
+      if (this.checked) {
+        $('.checkbox').each(function() {
+          this.checked = true;
+        });
+      } else {
+        $('.checkbox').each(function() {
+          this.checked = false;
+        });
+      }
+    });
+
+    $('.checkbox').on('click', function() {
+      if ($('.checkbox:checked').length == $('.checkbox').length) {
+        $('#todo').prop('checked', true);
+      } else {
+        $('#todo').prop('checked', false);
+      }
+    });
+  });
+</script>
