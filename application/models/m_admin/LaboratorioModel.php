@@ -25,4 +25,10 @@ class LaboratorioModel extends CI_Model {
         return $result;
     }
 
+    public function practicasDisponibles(){
+        $stored_procedure = "CALL proc_practicas_disponibles()";
+        $result = $this->db->query($stored_procedure);
+        return $result->result();;
+    }
+
 }

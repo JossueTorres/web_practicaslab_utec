@@ -1,4 +1,7 @@
-<!-- page content -->
+
+<!-- /page content -->
+
+
 <div class="right_col" role="main">
   <div class="">
 
@@ -29,31 +32,34 @@
                     <tr>
                       <th>#</th>
                       <th>LABORATORIO</th>
-                      <th>EDIFICIO</th>
-                      <th>NIVEL</th>
-                      <th>MAQUINAS</th>
+                      <th>Acronimo</th>
+                      <th>Filas</th>
+                      <th>Columnas</th>
                       <th>ESTADO</th>
                       <th><div class="botonesList">ACCIONES</div></th>
                     </tr>
                   </thead>
               
-                    <tbody>          
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>Francisco Morazan</td>
-                            <td>5</td>
-                            <td>80</td>
-                            <td>ACTIVO</td>
+                    <tbody>        
+                      <?php if (!empty($Lista2)) {
+                        foreach ($Lista2 as $item) {
+                          foreach ($item as $lb) { ?>
+                            <tr>
+                            <td><?php echo $lb->lab_codigo; ?></td>
+                            <td><?php echo $lb->lab_nombre; ?></td>
+                            <td><?php echo $lb->lab_acronimo; ?></td>
+                            <td><?php echo $lb->lab_filas; ?></td>
+                            <td><?php echo $lb->lab_columnas; ?></td>
+                            <td>Activo</td>
                             <td>
-                            <div class="botonesList">
-                  
-                              <button class="btn btn-sm btn-warning" type="button" data-toggle="modal" data-target="#modal-laboratorio" ><span class="fa fa-pencil"></span></button> 
-                              <button class="btn btn-sm btn-danger" type="button"><span class="fa fa-remove"></span></button> 
-                              <button class="btn btn-sm btn-info" type="button"><span class="fa fa-eye"></span></button> 
-                            </div>              
-                            </td>
-                        </tr>
+                             <button class="btnOJOlab btn btn-sm btn-info" codigo="<?php echo $lb->lab_codigo; ?>" type="button"><span class="fa fa-eye"></span></button>                                          
+                            </td> </tr>
+              <?php }
+          }
+        }  ?>  
+                            
+                           
+                       
                         
                     </tbody>
                 </table>
@@ -64,9 +70,25 @@
 
           </div>
         </div>
-      </div>
+  
+  
+
+
+
+
+
+
+<!-- page content -->
+
+<!-- /page content -->
+
+
+
+
+
+
+</div>
     </div>
-  </div>
 </div>
 
 <!-- /page content -->
@@ -169,3 +191,129 @@
     <!-- /.modal -->
 
 
+<!-- page content -->
+<style>
+  .onPC {
+    background-color: #A1F378;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .offPC {
+    background-color: #E99F9F;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .enabledPC {
+    background-color: #E5D7D7;
+    color: #fff;
+    border-radius: 5px;
+  }
+</style>
+
+<div class="" role="main">
+  <div class="">
+    <form class="hidden" action="<?php echo base_url('c_admin/ControlLaboratorio/index'); ?>" method="POST">
+      <div class="col-md-4 col-sm-12">
+        <select name="txtcodlab" id="txtcodlab" class="form-control ddl_buscar_lab_mapa">
+          <?php if (!empty($Lista2)) {
+            foreach ($Lista2 as $item) {
+              foreach ($item as $lb) { ?>
+                <option value="<?php echo $lb->lab_codigo; ?>"><?php echo $lb->lab_nombre; ?></option>
+              <?php }
+          }
+        }  ?>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-success btn_buscar_lab_mapa">Buscar</button>
+      </div>
+      <div class="col-md-4">
+        
+        <label><input type="checkbox" class=" form-control" id="ckb_maq_no_dis"/>Colocar Maquinas No disponibles</label>
+      </div>
+    </form>
+    <!-- form oculto para cambiar el estado de la maquina -->
+    <form class=" hidden" action="<?php echo base_url('c_admin/ControlLaboratorio/CambioEstadoMaquina'); ?>" method="POST">
+      <div class="col-md-4 col-sm-12">
+      <input name="txtcodmaq_lab" type="text" id="txtcodmaq_lab" class="form-control">
+      <input name="txtcodmaq_fil" type="text" id="txtcodmaq_fil" class="form-control">
+      <input name="txtcodmaq_col" type="text" id="txtcodmaq_col" class="form-control">
+      <input name="txtmaqEstado" type="text" id="txtmaqEstado" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-success btn_Cambiar_Estado_Reserva_Maquina">Buscar</button>
+      </div>
+     
+    </form>
+    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2 id="Nombre_lab" class="fuentetitulo"></h2>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content" style="text-align: center;">
+            <table class=" table-responsive table-striped table">
+              <tbody>
+                <?php if (!empty($Lista1)) {
+                  foreach ($Lista1 as $resp) {
+                    $cont = 1;
+                    $filaActual = 0;
+                    foreach ($resp as $maq) {
+                      ?>
+                      <!-- <tr> 
+                        <td>codlab: <?php echo $maq->maq_codlab; ?></td>
+                        <td>fila:  <?php echo $maq->maq_fila; ?></td>
+                        <td>columna: <?php echo $maq->maq_columna; ?></td>
+                        <td>maq estado: <?php echo $maq->maq_estado_maquina; ?></td>
+                        <td>res estado: <?php echo $maq->maq_estado_reserva; ?></td>
+                        <td>alias: <?php echo $maq->maq_alias; ?></td>
+                      </tr>-->
+                      
+                      <?php
+                      if($cont == 1){
+                        $filaActual = $maq->maq_fila;
+                        echo '<tr>';
+                      }
+                      if($filaActual == $maq->maq_fila){
+                        
+                      }else{
+                        echo '</tr><tr>';
+                        $filaActual = $maq->maq_fila;
+                      }
+                      echo '<td>';
+                        if ($maq->maq_estado_maquina == "I") {
+                          echo '<div class="MAQ enabledPC" estado="I" codlab="'.$maq->maq_codlab.'" codfil="'.$maq->maq_fila.'" codcol="'.$maq->maq_columna.'">';
+                        } else {
+                          echo '<div class="MAQ onPC" estado="D"  codlab="'.$maq->maq_codlab.'" codfil="'.$maq->maq_fila.'" codcol="'.$maq->maq_columna.'">';
+                        }
+                        ?>
+
+                        <center>
+                          <div class=""> <img src="https://pngimage.net/wp-content/uploads/2018/06/icone-informatique-png-1.png" alt="" width="40" height="40"></div>
+                        </center>
+                        <center>
+                          <h4><label href="#">PC-<?php echo $cont; ?></label></h4>
+                        </center>
+                      </td>
+                        <?php $cont++;
+                      
+                  }
+                }
+              }  ?>
+              </tr>
+              </tbody>
+            </table>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
