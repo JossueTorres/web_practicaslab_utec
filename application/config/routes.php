@@ -59,7 +59,7 @@ $route['Edificio/guardarDatos']['POST'] = 'apis/admin/Edificio_api/guardarDatos'
 $route['Edificio/borrarDatos']['POST'] = 'apis/admin/Edificio_api/borrarDatos';
 
 //Crud Asignacion
-$route['Config/Listado']['POST'] = 'apis/admin/Configuracion_api/index';
+$route['Config/Listado']['POST'] = 'apis/admin/Configuracion_api/listConfiguracion';
 $route['Config/guardarDatos']['POST'] = 'apis/admin/Configuracion_api/guardarDatos';
 $route['Config/borrarDatos']['POST'] = 'apis/admin/Configuracion_api/borrarDatos';
 
