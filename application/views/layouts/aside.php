@@ -34,7 +34,7 @@
            <div class="menu_section">
              <ul class="nav side-menu">
              <li><a href="<?php echo base_url();?>c_admin/Inicio"><i class="fa fa-home"></i> Inicio</a></li>
-             <li><a href="<?php echo base_url();?>c_admin/Edificio"><i class="fa fa-home"></i> Edificios</a></li>
+             <li><a href="<?php echo base_url('Edificios');?>"><i class="fa fa-building-o"></i> Edificios</a></li>
              <li><a href="<?php echo base_url();?>c_admin/EncargadoLaboratorio"><i class="fa fa-home"></i> Encargados</a></li>
              <li><a href="<?php echo base_url();?>c_admin/Laboratorio"><i class="fa fa-home"></i> Laboratorios</a></li>
              <li><a href="<?php echo base_url();?>c_admin/Inicio"><i class="fa fa-home"></i> Mi Perfil</a></li>

@@ -53,6 +53,25 @@ $route['default_controller'] = 'auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
+//_____________________________________________________________________________________________
+//Rutas Controladores
+
+//Crud Edificios
+$route['Edificios'] = 'c_admin/Edificio/index';
+$route['Edificios/Guardar'] = 'c_admin/Edificio/guardarDatos';
+$route['Edificios/Borrar'] = 'c_admin/Edificio/borrarDatos';
+
+//Crud Laboratorios
+$route['Laboratorios'] = 'c_admin/Laboratorio/index';
+$route['Laboratorios/Guardar'] = 'c_admin/Laboratorio/guardarDatos';
+$route['Laboratorios/Borrar'] = 'c_admin/Laboratorio/borrarDatos';
+//_____________________________________________________________________________________________
+
+
+
+//_____________________________________________________________________________________________
+//Rutas de los WS
 //Crud Edificios
 $route['Edificio/Listado']['POST'] = 'apis/admin/Edificio_api/listEdificios';
 $route['Edificio/guardarDatos']['POST'] = 'apis/admin/Edificio_api/guardarDatos';
@@ -103,3 +122,4 @@ $route['TUsuario/borrarDatos']['POST'] = 'apis/admin/TipoUsuario_api/borrarDatos
 $route['Usuario/Listado']['POST'] = 'apis/admin/Usuario_api/index';
 $route['Usuario/guardarDatos']['POST'] = 'apis/admin/Usuario_api/guardarDatos';
 $route['Usuario/borrarDatos']['POST'] = 'apis/admin/Usuario_api/borrarDatos';
+//_____________________________________________________________________________________________
