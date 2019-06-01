@@ -4,7 +4,7 @@ include_once("../classes/class.Database.php");
 
 
 
-$sql = "SELECT * FROM adm_edf_edificios where edf_est_reg = 'A' ";
+$sql = "SELECT * FROM adm_maq_maquinas ";
 
 $data = Database::get_arreglo( $sql );
 
