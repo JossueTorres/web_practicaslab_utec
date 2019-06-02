@@ -88,3 +88,4 @@ defined('COOKIECURL')      OR define('COOKIECURL', 'NID=67=pdjIQN5CUKVn0bRgAlqit
 defined('USERAGENTWS')      OR define('USERAGENTWS', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.A.B.C Safari/525.13'); // Uagent para CURL
 defined('URLWS')      OR define('URLWS', 'http://localhost:8080/web_practicaslab_utec/'); // url base para WS SERVER ALEX: 104.248.185.225
 defined('DOMWEB')      OR define('DOMWEB', 'localhost:8080'); // Dominio o ip para WS
+defined('URLWS2')      OR define('URLWS2', 'http://localhost:8080/web_practicaslab_utec/ws/servicios/'); // url base para WS SERVER ALEX: 104.248.185.225

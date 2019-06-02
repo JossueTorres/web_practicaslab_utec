@@ -22,7 +22,7 @@ $sql = "SELECT * FROM adm_lab_laboratorio where lab_est_reg = 'A' and lab_codigo
 
 $lab = Database::get_arreglo( $sql );
 $hecho = false;
-
+$alias =  $lab[0]['lab_acronimo'];
 if($lab[0]['lab_codigo'] > 0){
 	//$sql = "UPDATE `adm_maq_maquinas` SET `maq_est_reg`='B' where maq_codlab = $dblab_codigo";
 	//$hec2 = Database::ejecutar_idu($sql);
@@ -31,7 +31,7 @@ if($lab[0]['lab_codigo'] > 0){
 	for ($i =1; $i <= $lab[0]['lab_filas']; $i++) { 
 		for ($j=1; $j <= $lab[0]['lab_columnas']; $j++) { 
 			
-				$sql = "INSERT INTO `adm_maq_maquinas` (`maq_codlab`, `maq_fila`, `maq_columna`, `maq_estado_maquina`, `maq_estado_reserva`, `maq_est_reg` , `maq_alias`) VALUES ($dblab_codigo,$i,$j,'A','I','A','PC')";
+				$sql = "INSERT INTO `adm_maq_maquinas` (`maq_codlab`, `maq_fila`, `maq_columna`, `maq_estado_maquina`, `maq_estado_reserva`, `maq_est_reg` , `maq_alias`) VALUES ($dblab_codigo,$i,$j,'A','I','A','$alias')";
 			
 			$hecho = Database::ejecutar_idu($sql);
 			
