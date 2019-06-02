@@ -60,7 +60,3 @@ $respuesta = json_encode(
 
 
 echo $respuesta;
-
-
-
-?>

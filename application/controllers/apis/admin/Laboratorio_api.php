@@ -13,7 +13,7 @@ class Laboratorio_api extends REST_Controller
         parent::__construct();
 
         $this->load->database();
-        $this->load->model("m_admin/LaboratorioModel");
+        $this->load->model("m_admin/LaboratoriosModel");
     }
 
     public function listLaboratorios_post()
@@ -27,23 +27,24 @@ class Laboratorio_api extends REST_Controller
         $nombre = $this->post("nom");
         $latitud = $this->post("lat");
         $longitud = $this->post("lon");
+        $estado = $this->post("est");
         $data = array(
             'cod' => (int)$codigo,
             'edf' => (int)$codEdificio,
             'acr' => $acronimo,
             'fil' => (int)$filas,
-            'col' => (int)$columnas,            
+            'col' => (int)$columnas,
             'lat' => (double)$latitud,
-            'lon' => (double)$longitud, 
-            'nom' => $nombre,          
+            'lon' => (double)$longitud,
+            'nom' => $nombre,
+            'est' => $estado,
         );
-        $list= $this->LaboratorioModel->getListaLaboratorios($data);
-        if(!is_null($list)){
-            $this->response(array('resp' => $list),200);
-        }else {
+        $list = $this->LaboratoriosModel->getListaLaboratorios($data);
+        if (!is_null($list)) {
+            $this->response(array('resp' => $list), 200);
+        } else {
 
-            $this->response(array('resp'=>'No hay registros'),404);
-
+            $this->response(array('resp' => 'No hay registros'), 404);
         }
     }
 
@@ -54,23 +55,25 @@ class Laboratorio_api extends REST_Controller
         $codEdificio = $this->post("edf");
         $acronimo = $this->post("acr");
         $filas = $this->post("fil");
-        $columnas = $this->post("col");        
+        $columnas = $this->post("col");
         $latitud = $this->post("lat");
         $longitud = $this->post("lon");
         $nombre = $this->post("nom");
+        $estado = $this->post("est");
 
         //mandar los input a arreglo y campos de la bd
         $data = array(
-            'cod' =>(int) $codigo,
+            'cod' => (int)$codigo,
             'edf' => (int)$codEdificio,
             'acr' => $acronimo,
             'fil' => (int)$filas,
-            'col' => (int)$columnas,            
+            'col' => (int)$columnas,
             'lat' => (double)$latitud,
-            'lon' => (double)$longitud,  
-            'nom' => $nombre,          
+            'lon' => (double)$longitud,
+            'nom' => $nombre,
+            'est' => $estado,
         );
-        if ($this->LaboratorioModel->guardarDatos($codigo, $data))
+        if ($this->LaboratoriosModel->guardarDatos($codigo, $data))
             $this->response(array('status' => 'Registro se guardo correctamente'));
         else
             $this->response(array('status' => 'fallo'));
@@ -95,20 +98,33 @@ class Laboratorio_api extends REST_Controller
             'lat' => 0,
             'lon' => 0,
             'nom' => '',
+            'est' => '',
         );
 
-        if ($this->LaboratorioModel->borrarDatos($data))
+        if ($this->LaboratoriosModel->borrarDatos($data))
             $this->response(array('status' => 'Eliminado con exito'));
         else
             $this->response(array('status' => 'fallo'));
     }
 
-    public function Practicas_get(){
-        $list= $this->LaboratorioModel->practicasDisponibles();
-        if(!is_null($list)){
-            $this->response(array('resp' => $list),200);
-        }else {
-            $this->response(array('resp'=>'No hay registros'),404);
+    public function Practicas_get()
+    {
+        $list = $this->LaboratoriosModel->practicasDisponibles();
+        if (!is_null($list)) {
+            $this->response(array('resp' => $list), 200);
+        } else {
+            $this->response(array('resp' => 'No hay registros'), 404);
+        }
+    }
+
+    public function borrarMaquinas_post()
+    {
+        $lab = $this->post('lab');
+        $res = $this->LaboratoriosModel->borrarMaquinas($lab);
+        if ($res > 0) {
+            $this->response(array('resp' => 'Se eliminaron '.$res. ' registro/s'), 200);
+        } else {
+            $this->response(array('resp' => 'No se eliminaron registros'), 200);
         }
     }
 
@@ -124,10 +140,10 @@ class Laboratorio_api extends REST_Controller
     //         'lo' => 0,
     //         'nom' => '',
     //     );
-    //     $lab = $this->LaboratorioModel->getListaLaboratorios($data);
+    //     $lab = $this->LaboratoriosModel->getListaLaboratorios($data);
     //     for ($i = 1; $i <= $lab->$lab_filas[0]; $i++) { 
     //         for ($i=0; $i < $lab->$lab_columnas[0]; $i++) { 
-                
+
     //         }
     //     }
     // }

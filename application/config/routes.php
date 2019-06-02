@@ -63,9 +63,10 @@ $route['Edificios/Guardar'] = 'c_admin/Edificio/guardarDatos';
 $route['Edificios/Borrar'] = 'c_admin/Edificio/borrarDatos';
 
 //Crud Laboratorios
-$route['Laboratorios'] = 'c_admin/Laboratorio/index';
-$route['Laboratorios/Guardar'] = 'c_admin/Laboratorio/guardarDatos';
-$route['Laboratorios/Borrar'] = 'c_admin/Laboratorio/borrarDatos';
+$route['Laboratorios'] = 'c_admin/Laboratorios/index';
+$route['Laboratorios/Guardar'] = 'c_admin/Laboratorios/guardarDatos';
+$route['Laboratorios/Borrar'] = 'c_admin/Laboratorios/borrarDatos';
+$route['Laboratorios/crearMaquinas'] = 'c_admin/Laboratorios/crearMaquinas';
 //_____________________________________________________________________________________________
 
 
@@ -97,6 +98,7 @@ $route['Laboratorio/Listado']['POST'] = 'apis/admin/Laboratorio_api/listLaborato
 $route['Laboratorio/guardarDatos']['POST'] = 'apis/admin/Laboratorio_api/guardarDatos';
 $route['Laboratorio/borrarDatos']['POST'] = 'apis/admin/Laboratorio_api/borrarDatos';
 $route['Laboratorio/Practicas']['GET'] = 'apis/admin/Laboratorio_api/Practicas';
+$route['Laboratorio/borrarMaquinas']['POST'] = 'apis/admin/Laboratorio_api/borrarMaquinas';
 
 //Crud Encargado de Laboratorio Pivote
 $route['EncargadoLab/Listado']['POST'] = 'apis/admin/LaboratorioEncargado_api/listLaboratoriosEncargados';

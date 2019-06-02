@@ -39,9 +39,9 @@
                           <th>NOMBRE</th>
                           <th>ACRÓNIMO</th>
                           <th>ESTADO</th>
-                          <th>MODIFICAR</th>
+                          <th>ACCIONES</th>
                           <th>
-                            <div class="center-block"><input type="checkbox" name="todo" id="todo" class="checkbox" />&nbsp;<button class="btn btn-danger btn-xs"  onclick="return confimar('borrar');">Borrar</button></div>
+                            <div class="center-block"><input type="checkbox" name="todo" id="todo" class="checkbox" />&nbsp;<button class="btn btn-danger btn-xs"  onclick="return confimar('borrar');">BORRAR</button></div>
                           </th>
                         </tr>
                       </thead>
@@ -56,7 +56,7 @@
                                                       else echo 'label-danger'; ?>"><?php if ($ed->edf_estado == 'A') echo 'Habilitado';
                                                                                       else echo 'Deshabilitado'; ?></label></td>
                               <td class="text-center">
-                                <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="edit('<?php echo $ed->edf_codigo ?>','<?php echo $ed->edf_nombre ?>','<?php echo $ed->edf_acronimo ?>','<?php echo $ed->edf_estado ?>')">Modificar</a>
+                                <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $ed->edf_codigo ?>','<?php echo $ed->edf_nombre ?>','<?php echo $ed->edf_acronimo ?>','<?php echo $ed->edf_estado ?>');">Modificar</a>
                               </td>
                               <td>
                                 <input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php echo $ed->edf_codigo; ?>" />
@@ -92,13 +92,13 @@
           <div class="form-row">
             <div class="form-group col-md-6 col-sm-6 col-xs-12">
               <label>Nombre</label>
-              <input type="text" id="txtNom" name="txtNom" class="form-control col-md-7 col-xs-12 txtNom" placeholder="Ingrese el código" required="">
+              <input type="text" id="txtNom" name="txtNom" class="form-control col-md-7 col-xs-12 txtNom" placeholder="Ingrese el Nombre" required="">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6 col-sm-6 col-xs-12">
               <label>Acrónimo</label>
-              <input type="text" id="txtAcr" name="txtAcr" class="form-control col-md-7 col-xs-12 txtAcr" placeholder="Ingresar Acronimo" required="">
+              <input type="text" id="txtAcr" name="txtAcr" class="form-control col-md-7 col-xs-12 txtAcr" placeholder="Ingresar Acrónimo" required="">
             </div>
           </div>
           <div class="form-row">
@@ -119,7 +119,7 @@
           </div>
           <div class="form-row">
             <div class="form-group col-md-12 col-sm-12 col-xs-12">
-              <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-primary">
+              <input type="submit" name="btnGuardar" id="btnGuardar" value="Guardar" class="btn btn-primary btnGuardar">
               <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button> -->
             </div>
           </div>

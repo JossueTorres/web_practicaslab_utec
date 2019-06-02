@@ -60,7 +60,7 @@ class Laboratorio extends CI_Controller
 			//_________________________________________________________________
 			//Obtenemos el resultado
 			//_________________________________________________________________
-			array_push($data, json_decode(curl_exec($ch)));
+			$data['lst'.$cont] = json_decode(curl_exec($ch));
 		}
 		//cerramos el Curl
 		curl_close($ch);
