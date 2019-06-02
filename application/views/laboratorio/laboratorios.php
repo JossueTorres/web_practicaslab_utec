@@ -5,6 +5,8 @@
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
+    max-width: 100px;
+	max-height: 100px;
   }
 
   .offPC {
@@ -12,12 +14,16 @@
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
+    max-width: 100px;
+	max-height: 100px;
   }
 
   .enabledPC {
     background-color: #E5D7D7;
     color: #fff;
     border-radius: 5px;
+    max-width: 100px;
+	max-height: 100px;
   }
 </style>
 
@@ -100,7 +106,7 @@
                         } elseif ($maq->maq_estado_reserva == "O") {
                           echo '<div class="MAQ offPC" estado="O"  codlab="'.$maq->maq_codlab.'" codfil="'.$maq->maq_fila.'" codcol="'.$maq->maq_columna.'">';
                         }else{
-                          echo '<div class="MAQ offPC" estado="D"  codlab="'.$maq->maq_codlab.'" codfil="'.$maq->maq_fila.'" codcol="'.$maq->maq_columna.'">';
+                          echo '<div class="MAQ onPC" estado="D"  codlab="'.$maq->maq_codlab.'" codfil="'.$maq->maq_fila.'" codcol="'.$maq->maq_columna.'">';
                         }
                         ?>
 
