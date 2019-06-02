@@ -42,25 +42,8 @@
         </select>
       </div>
       <div class="col-md-4">
-        <button type="submit" class="btn btn-success btn_buscar_lab_mapa">Buscar</button>
+        <button type="submit" class="btn btn-success btn_buscar_lab_mapa">Buscar </button>
       </div>
-      <div class="col-md-4">
-        
-        <label><input type="checkbox" class=" form-control" id="ckb_maq_no_dis"/>Colocar Maquinas No disponibles</label>
-      </div>
-    </form>
-    <!-- form oculto para cambiar el estado de la maquina -->
-    <form class=" hidden" action="<?php echo base_url('c_laboratorio/ControlLaboratorio/CambioEstadoMaquina'); ?>" method="POST">
-      <div class="col-md-4 col-sm-12">
-      <input name="txtcodmaq_lab" type="text" id="txtcodmaq_lab" class="form-control">
-      <input name="txtcodmaq_fil" type="text" id="txtcodmaq_fil" class="form-control">
-      <input name="txtcodmaq_col" type="text" id="txtcodmaq_col" class="form-control">
-      <input name="txtmaqEstado" type="text" id="txtmaqEstado" class="form-control">
-      </div>
-      <div class="col-md-4">
-        <button type="submit" class="btn btn-success btn_Cambiar_Estado_Reserva_Maquina">Buscar</button>
-      </div>
-     
     </form>
     <div class="clearfix"></div>
     <div class="row">
@@ -114,7 +97,11 @@
                           <div class=""> <img src="https://pngimage.net/wp-content/uploads/2018/06/icone-informatique-png-1.png" alt="" width="40" height="40"></div>
                         </center>
                         <center>
-                          <h4><label href="#">PC-<?php echo $cont; ?></label></h4>
+                          <h4><label href="#"><?php echo $maq->maq_alias; ?>-<?php echo $cont; ?></label></h4>
+                      </div>
+                      <?php 
+                           echo '<button  class="btn btn-block btn-default boton_c_ina"  codlab="'.$maq->maq_codlab.'" codfil="'.$maq->maq_fila.'" codcol="'.$maq->maq_columna.'"></button>' 
+                          ?>
                         </center>
                       </td>
                         <?php $cont++;
@@ -145,6 +132,57 @@
   </div>
 </div>
 <script>
+    $(".MAQ").click(function() {
+      //alert("click");
+      var codlab = $(this).attr("codlab");
+      var codfil = $(this).attr("codfil");
+      var codcol = $(this).attr("codcol");
+      //alert(codcol);
+      var estado = $(this).attr("estado");
+      $(this).removeClass("offPC");
+      $(this).removeClass("onPC");
+      $(this).removeClass("enabledPC");
 
+        if (estado == "D") {
+          $(this).addClass("offPC");
+          $(this).attr("estado", "O");
+        } else {
+
+          $(this).addClass("onPC");
+          $(this).attr("estado", "D");
+        }
+        CambiarEstadoMaquina(codlab,codfil,codcol, $(this).attr("estado"));
+    });
+
+    $(".boton_c_ina").click(function(){
+      var $hermano = $(this).siblings(".MAQ");
+      $hermano.removeClass("offPC");
+      $hermano.removeClass("onPC");
+      $hermano.removeClass("enabledPC");
+      $hermano.addClass("enabledPC");
+      $hermano.attr("estado", "I");
+      var codlab = $hermano.attr("codlab");
+      var codfil = $hermano.attr("codfil");
+      var codcol = $hermano.attr("codcol");
+      CambiarEstadoMaquina(codlab,codfil,codcol,"I");
+    });
+
+     
+    
+    function CambiarEstadoMaquina(lab,fil,col,est) {
+      var urlbase= "<?php echo URLWS2; ?>";
+			$.ajax({
+				type: 'POST',
+				url : urlbase+'CambiarEstadoReserva.php?lab='+lab+'&fil='+fil+'&col='+col+'&est='+est,
+				dataType: 'json'
+			})
+			.done(function( data ){
+				//alert("Cambio estado!!!");
+			})
+			.fail(function(){
+				alert("Error al Actualizar Registro!!!");
+			});
+			
+	};
 </script>
 <!-- /page content -->
