@@ -18,38 +18,8 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <div class="row top_tiles">
-                      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-
-                        <div class="tile-stats">
-                          <div class="icon"><i class="fa fa-desktop"></i></div>
-                          <div class="count">5</div>
-                          <center>
-                            <h4>Maquinas Disponibles</h4>
-                          </center>
-                          <p>
-                            <h3> <a class="small-box-footer">Laboratorio 10  
-                              <i style="cursor:pointer;" latitud="13.700353" longitud="-89.201844" class="fa fa-map"></i></a></h3>
-                          </p>
-
-                        </div>
-                      </div>
-                        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-
-                        <div class="tile-stats">
-                          <div class="icon"><i class="fa fa-desktop"></i></div>
-                          <div class="count">10</div>
-                          <center>
-                            <h4>Maquinas Disponibles</h4>
-                          </center>
-                          <p>
-                            <h3> <a class="small-box-footer">Laboratorio 3  
-                              <i style="cursor:pointer;" latitud="13.700478" longitud="-89.201578" class="fa fa-map"></i></a></h3>
-                          </p>
-
-                        </div>
-
-                      </div>
+                    <div id="Contenedor-maquinas" class="row top_tiles">
+                      
                     </div>
                   </div>
                 </div>
@@ -74,14 +44,16 @@
           </div>
           <!-- /.modal-dialog -->
         </div>
+
         <script>
-          $(".fa-map").click(function() {
+          $('#Contenedor-maquinas').on('click', '.fa-map', function(){
             var lat = $(this).attr("latitud");
             var lon = $(this).attr("longitud");
             $("#modmap").empty();
             var latlon =lat+","+lon;
             var urlmap = "https://maps.google.com/maps?q="+latlon;
             urlmap += "&hl=es;z=14&amp;output=embed";
+            //console.log($(this));
             var html= "";
         html +=' <iframe width="100%" height="300px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="'+ urlmap+'">';
         html +='</iframe>';
@@ -93,4 +65,41 @@
         $("#modmap").append(html);
         $("#modal-map").modal('show');
         });
+        setInterval( GetMaquinasDisponibles , 5000);
+        GetMaquinasDisponibles();
+        function GetMaquinasDisponibles(){
+          $("#Contenedor-maquinas").empty();
+          var urlbase = "<?php echo URLWS2; ?>";
+          $.ajax({
+					type: 'GET',
+					url : urlbase+'GetMaquinasDisponibles.php',
+					dataType: 'json'
+				})
+				.done(function( data ){
+						data.maquinas.forEach(function (maquinas,index) {
+                var content = ' '; 
+                
+                    content +='<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">';
+                    content +='<div class="tile-stats">';
+                    content +='<div class="icon"><i class="fa fa-desktop"></i></div>';
+                    content +='<div class="count">'+maquinas.Maquinas+'</div>';
+                    content +='<center>';
+                    content +='<h4>Maquinas Disponibles</h4>';
+                    content +='</center>';
+                    content +='<p>';
+                    content +='<h3> <a class="small-box-footer">'+maquinas.lab_nombre;
+                    content +='&nbsp&nbsp<i style="cursor:pointer;" latitud="'+maquinas.lab_latitud+'" longitud="'+maquinas.lab_longitud+'" class="fa fa-map"></i></a></h3>';
+                    content +='</p>';
+                    content +='</div>';
+                    content +='</div>';
+
+								$("#Contenedor-maquinas").append(content);
+
+						});
+
+				})
+				.fail(function(){
+					console.log("Fallo!");
+				});
+        };
         </script>
