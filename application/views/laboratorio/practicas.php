@@ -24,7 +24,7 @@
           <div class="x_content">
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <button type="button" class="btn btn-primary" onclick="javascript: cleanFields();mostrarModal();"><span class="fa fa-plus"></span>&nbsp;Agregar Edificio</button>
+                <button type="button" class="btn btn-primary" onclick="javascript: cleanFields();mostrarModal();"><span class="fa fa-plus"></span>&nbsp;Agregar Práctica</button>
               </div>
             </div>
             <hr>
@@ -36,9 +36,15 @@
                       <thead>
                         <tr>
                           <th>LAB</th>
-                          <th>NOMBRE</th>
-                          <th>ACRÓNIMO</th>
-                          <th>ESTADO</th>
+                          <th>FECHA INICIA</th>
+                          <th>FECHA TERMINA</th>
+                          <th>L</th>
+                          <th>M</th>
+                          <th>X</th>
+                          <th>J</th>
+                          <th>V</th>
+                          <th>S</th>
+                          <th>D</th>
                           <th>ACCIONES</th>
                           <th>
                             <div class="center-block"><input type="checkbox" name="todo" id="todo" class="checkbox" />&nbsp;<button class="btn btn-danger btn-xs"  onclick="return confimar('borrar');">BORRAR</button></div>
@@ -47,19 +53,23 @@
                       </thead>
                       <tbody>
                         <?php if (!empty($resp)) {
-                          foreach ($resp as $ed) { ?>
+                          foreach ($resp as $cop) { ?>
                             <tr>
-                              <td><?php echo $ed->edf_codigo; ?></td>
-                              <td><?php echo $ed->edf_nombre; ?></td>
-                              <td><?php echo $ed->edf_acronimo; ?></td>
-                              <td><label class="label <?php if ($ed->edf_estado == 'A') echo 'label-success';
-                                                      else echo 'label-danger'; ?>"><?php if ($ed->edf_estado == 'A') echo 'Habilitado';
-                                                                                      else echo 'Deshabilitado'; ?></label></td>
+                              <td><?php echo $cop->cop_codlab; ?></td>
+                              <td><?php echo $cop->cop_fecha_hora_inicia; ?></td>
+                              <td><?php echo $cop->cop_fecha_hora_fin; ?></td>
+                              <td><label class="fa <?php if($cop->cop_lunes == 2) echo "fa-check"; else echo "fa-square"; ?>"></label></td>
+                              <td><label class="fa <?php if($cop->cop_martes == 2) echo "fa-check"; else echo "fa-square"; ?>"></label></td>
+                              <td><label class="fa <?php if($cop->cop_miercoles == 2) echo "fa-check"; else echo "fa-square"; ?>"></label></td>
+                              <td><label class="fa <?php if($cop->cop_jueves == 2) echo "fa-check"; else echo "fa-square"; ?>"></label></td>
+                              <td><label class="fa <?php if($cop->cop_viernes == 2) echo "fa-check"; else echo "fa-square"; ?>"></label></td>
+                              <td><label class="fa <?php if($cop->cop_sabado == 2) echo "fa-check"; else echo "fa-square"; ?>"></label></td>
+                              <td><label class="fa <?php if($cop->cop_domingo == 2) echo "fa-check"; else echo "fa-square"; ?>"></label></td>                              
                               <td class="text-center">
-                                <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $ed->edf_codigo ?>','<?php echo $ed->edf_nombre ?>','<?php echo $ed->edf_acronimo ?>','<?php echo $ed->edf_estado ?>');">Modificar</a>
+                                <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $cop->cop_codigo ?>','<?php echo $cop->cop_codlab ?>','<?php echo $cop->cop_fecha_hora_inicia ?>','<?php echo $cop->cop_fecha_hora_fin ?>');">Modificar</a>
                               </td>
                               <td>
-                                <input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php echo $ed->edf_codigo; ?>" />
+                                <input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php echo $cop->cop_codigo; ?>" />
                               </td>
                             </tr>
                           <?php }
