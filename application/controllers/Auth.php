@@ -29,6 +29,20 @@ class Auth extends CI_Controller
 		}	
 	}
 
+	public function login2(){
+
+		$varablequevienedeJS="6wxgIG0XN3XuADxgVLkZ5da3G2l2";
+		$jsonUrl = "https://applab-9034b.firebaseio.com/Usuarios/".$varablequevienedeJS.".json";
+
+		$data = file_get_contents($jsonUrl);
+		$products = json_decode($data, true);
+		
+		foreach ($products as $product) {
+			print_r($product);
+		}
+	
+	}
+
 	public function login()
 	{
 		$user = $this->input->post("txtUsr");
