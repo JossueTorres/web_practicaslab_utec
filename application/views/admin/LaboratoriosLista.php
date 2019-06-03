@@ -66,11 +66,12 @@
                                                     <th># FILAS</th>
                                                     <th># COLUMNAS</th>
                                                     <th>ESTADO</th>
-                                                    <th>
-                                                        <div class="botonesList">ACCIONES</div>
+                                                    <th style="text-align:center; ">
+                                                        ACCIONES
                                                     </th>
-                                                    <th>
-                                                        <div class="center-block"><input type="checkbox" name="todo" id="todo" class="checkbox" />&nbsp;<button class="btn btn-danger btn-xs" onclick="return confimar('borrar');">BORRAR</button></div>
+                                                    <th style="text-align:center; "> 
+                                                        <button class="btn btn-danger btn-xs" onclick="return confimar('borrar');">BORRAR</button>
+                                                        <input type="checkbox" name="todo" id="todo" class="checkbox" />
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -86,12 +87,12 @@
                                                             <td><label class="label <?php if ($lb->lab_estado == 'A') echo 'label-success';
                                                                                     else echo 'label-danger'; ?>"><?php if ($lb->lab_estado == 'A') echo 'Habilitado';
                                                                                                                             else echo 'Deshabilitado'; ?></label></td>
-                                                            <td>
+                                                            <td style="text-align:center; ">
                                                                 <!-- <button class="btn btn-sm btn-info" codigo="<?php echo $lb->lab_codigo; ?>" type="button"><span class="fa fa-eye"></span></button> -->
                                                                 <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $lb->lab_codigo ?>','<?php echo $lb->lab_codedf ?>','<?php echo $lb->lab_nombre ?>','<?php echo $lb->lab_acronimo ?>','<?php echo $lb->lab_filas ?>','<?php echo $lb->lab_columnas ?>','<?php echo $lb->lab_latitud ?>','<?php echo $lb->lab_longitud ?>','<?php echo $lb->lab_estado ?>');" title="Editar Laboratorio"><i class="fa fa-edit"></i></a>
                                                                 <a name="btnCrear" id="btnCrear" class="btn btn-info btn-xs" onclick="javascript: crear('<?php echo $lb->lab_codigo ?>','<?php echo $lb->lab_filas ?>','<?php echo $lb->lab_columnas ?>','<?php echo $lb->lab_acronimo ?>');" title="Crear o actualizar máquinas del Laboratorio"><i class="fa fa-desktop"></i>&nbsp;<i class="fa fa-refresh"></i></a>
                                                             </td>
-                                                            <td>
+                                                            <td style="text-align:center; ">
                                                                 <input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php echo $lb->lab_codigo; ?>" />
                                                             </td>
                                                         </tr>
