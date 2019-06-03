@@ -58,13 +58,13 @@
   <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
-      apiKey: "AIzaSyBpHUZPHz4Vzm_tazZjBVxcHI_U5NfyvHA",
-      authDomain: "practicas-df991.firebaseapp.com",
-      databaseURL: "https://practicas-df991.firebaseio.com",
-      projectId: "practicas-df991",
-      storageBucket: "practicas-df991.appspot.com",
-      messagingSenderId: "1057359215817",
-      appId: "1:1057359215817:web:e14cde41471629df"
+      apiKey: "AIzaSyB4JQ_A4o6sfVloiwG42t8xB_BwFgm3dXI",
+    authDomain: "applab-9034b.firebaseapp.com",
+    databaseURL: "https://applab-9034b.firebaseio.com",
+    projectId: "applab-9034b",
+    storageBucket: "applab-9034b.appspot.com",
+    messagingSenderId: "998271382901",
+    appId: "1:998271382901:web:b64304d5e40c14aa"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -76,7 +76,7 @@
     <div class="MainCont">
       <h1 class="Titulo">Practicas</h1>
       <div class="panel panel-primary">
-        <form action="<?php echo base_url('Auth/login'); ?>" method="post" class="" data-type-form="login" autocomplete="off">
+        <form action="<?php echo base_url('Auth/login2'); ?>" method="post" class="" data-type-form="login" autocomplete="off">
           <div class="panel-header">
             <h4 class="onH">Iniciar Sesion</h4>
           </div>
@@ -139,6 +139,20 @@
       // Sign in with email and pass.
       // [START authwithemail]
       firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+
+        //aqui 
+        var user = firebase.auth().currentUser;
+
+        //id que vas a pasar a php
+        var  uid = user.uid;
+        
+          if (user) 
+            console.log("ok", uid);
+          else 
+            console.log("no");
+          
+
+
         // alert("Logeado");
         // return true;
         $(".btnSingIn").click();
