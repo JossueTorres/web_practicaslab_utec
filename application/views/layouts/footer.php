@@ -54,6 +54,20 @@
 
 <!-- Custom Theme Scripts -->
 <script>
+  function singOut() {
+    if (!confirm("¿Está seguro que desea cerrar la sesión?")) {
+      return false;
+    } else {
+      firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        // alert("Saliendo...");
+      }).catch(function(error) {
+        alert("Error");
+        // An error happened.
+      });
+      return true;
+    }
+  }
   $(document).ready(function() {
 
     window.history.pushState(null, "", window.location.href);
@@ -70,13 +84,6 @@
         alert("El campo acrónimo es requerido");
       }
     });
-
-    firebase.auth().signOut().then(function() {
-      // Sign-out successful.
-    }).catch(function(error) {
-      // An error happened.
-    });
-
   });
 </script>
 

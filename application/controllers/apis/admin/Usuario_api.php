@@ -16,7 +16,7 @@ class Usuario_api extends REST_Controller
         $this->load->model("m_admin/UsuarioModel");
     }
 
-    public function listUsuarios_get()
+    public function listUsuarios_post()
     {
         //ponemos lo que venga de los filtros;
         $usr = $this->post("usr");

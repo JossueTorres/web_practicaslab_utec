@@ -85,7 +85,8 @@
             <input name='txtPass' id='txtPass' type="password" placeholder="Contraseña" class="form-control txtPass" />
           </div>
           <div class="panel-footer">
-            <button role="button" type="submit" class="btn btnSingIn">Ingresar</button>
+            <button role="button" type="submit" class="hidden btn btnSingIn">Ingresar</button>
+            <label class="btn btnSingInDet">Ingresar</label>
           </div>
         </form>
       </div>
@@ -117,56 +118,60 @@
   <script src="<?php echo base_url(); ?>assets/template/bootstrap/dist/js/bootstrap.min.js"></script> -->
 
   <script>
+    var clickeado = false;
+
     function toggleSignIn() {
       if (firebase.auth().currentUser) {
         // [START signout]
         firebase.auth().signOut();
         // [END signout]
-      } else {
-        var email = $(".txtUsr").val();
-        var password = $(".txtPass").val();
-        if (email.length < 4) {
-          alert('Ingrese un Correo.');
-          return false;
-        }
-        if (password.length < 4) {
-          alert('Ingrese una contraseña.');
-          return false;
-        }
-        // Sign in with email and pass.
-        // [START authwithemail]
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // [START_EXCLUDE]
-          if (errorCode === 'auth/wrong-password') {
-            alert('Contraseña Incorrecta.');
-          } else {
-            alert(errorMessage);
-          }
-          // alert(error + '\n'+ 'No se Ingresó');
-          return false;
-          // alert(false);
-          // [END_EXCLUDE]
-        });
-        // [END authwithemail]
       }
-      // document.getElementById('quickstart-sign-in').disabled = true;
-      // alert('Acceso Correcto');
-      // alert('Logged');
-      return true;
+      var email = $(".txtUsr").val();
+      var password = $(".txtPass").val();
+      if (email.length < 4) {
+        alert('Ingrese un Correo.');
+        return false;
+      }
+      if (password.length < 4) {
+        alert('Ingrese una contraseña.');
+        return false;
+      }
+      // Sign in with email and pass.
+      // [START authwithemail]
+      firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+        // alert("Logeado");
+        // return true;
+        $(".btnSingIn").click();
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode === 'auth/wrong-password') {
+          alert('Contraseña Incorrecta.');
+        } else if('auth/user-not-found'){
+          alert("El usuario no existe");
+        } else {
+          alert(errorCode + '\n' + errorMessage);
+        }
+        // alert(error + '\n'+ 'No se Ingresó');
+        return false;
+        // alert(false);
+        // [END_EXCLUDE]
+      });
     }
     $(function() {
-      $(".btnSingIn").on("click", function(e) {
-        var ingreso = toggleSignIn();
-        if (ingreso) {
-          alert("Pasa Validación");
-          return true;
+      $(".btnSingInDet").click(function(e) {
+        clickeado = true;
+        toggleSignIn();
+      });
+      $(".btnSingIn").click(function(e) {
+        // alert(clickeado);
+        if (clickeado) {
+          // $(this).unbind('submit').submit();
         } else {
-          alert("No Pasa Validación");
-          return false;
-        };
+          e.preventDefault();
+        }
       });
     });
   </script>

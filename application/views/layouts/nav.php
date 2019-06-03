@@ -21,7 +21,7 @@
                       </a>
                     </li> -->
                     <!-- <li><a href="javascript:;">Ayuda</a></li> -->
-                    <li><a href="<?php echo base_url(); ?>auth/logout"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
+                    <li><a onclick="javascript: return singOut();" href="<?php echo base_url(); ?>auth/logout"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
                   </ul>
                 </li>
                 <!-- <li role="presentation" class="dropdown">
