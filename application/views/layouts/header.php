@@ -91,7 +91,7 @@
               <img src="<?php echo base_url() ?>assets/template/dist/img/user.png" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-              <span>Bienvenido,</span>
+              <span><b>Bienvenido</b></span>
               <h2><?php echo $this->session->userdata("usrnombre") ?></h2>
             </div>
             <div class="clearfix"></div>

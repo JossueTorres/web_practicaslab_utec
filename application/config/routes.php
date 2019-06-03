@@ -72,6 +72,11 @@ $route['Laboratorios/crearMaquinas'] = 'c_admin/Laboratorios/crearMaquinas';
 $route['Admin/Inicio'] = 'c_admin/Inicio/index';
 $route['Alumno/Inicio'] = 'c_estudiante/Inicio/index';
 $route['Lab/Inicio'] = 'c_laboratorio/Inicio/index';
+
+//Crud Practicas
+$route['Practicas'] = 'c_laboratorio/ProgramarPractica/index';
+$route['Practicas/Guardar'] = 'c_laboratorio/ProgramarPractica/guardarDatos';
+$route['Practicas/Borrar'] = 'c_laboratorio/ProgramarPractica/borrarDatos';
 //_____________________________________________________________________________________________
 
 

@@ -21,11 +21,11 @@
        <div class="menu_section">
          <ul class="nav side-menu">
            <li><a href="<?php echo base_url('Lab/Inicio'); ?>"><i class="fa fa-home"></i> Inicio</a></li>
-           <li><a href="<?php echo base_url(); ?>c_laboratorio/ControlLaboratorio"><i class="fa fa-home"></i> Control Laboratorio</a></li>
+           <li><a href="<?php echo base_url(); ?>c_laboratorio/ControlLaboratorio"><i class="fa fa-desktop"></i> Control Laboratorio</a></li>
            </li>
-           <li><a href="<?php echo base_url(); ?>c_laboratorio/ProgramarPractica"><i class="fa fa-home"></i> Programar Practica</a></li>
-           <li><a href="<?php echo base_url(); ?>c_laboratorio/Informe"><i class="fa fa-home"></i> Informes</a></li>
-           <li><a href="<?php echo base_url(); ?>"><i class="fa fa-home"></i> Cerrar Sesion</a></li>
+           <li><a href="<?php echo base_url('Practicas'); ?>"><i class="fa fa-calendar"></i> Programar Practica</a></li>
+           <li><a href="<?php echo base_url(); ?>c_laboratorio/Informe"><i class="fa fa-file"></i> Informes</a></li>
+           <li><a href="<?php echo base_url(); ?>"><i class="fa fa-sign-out"></i> Cerrar Sesion</a></li>
          </ul>
        </div>
      </div>
