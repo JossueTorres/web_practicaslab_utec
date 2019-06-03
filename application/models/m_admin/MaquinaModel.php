@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MaquinaModel extends CI_Model {
 
 	public function getListaMaquinas($data) { 
-        $result = $this->db->query("CALL proc_crud_maquina(1,?,?,?,?,?,?,0,0,0)", $data);
+        $result = $this->db->query("CALL proc_crud_maquina(1,?,?,?,?,?,?,?,?,?)", $data);
         return $result->result();
     }
 

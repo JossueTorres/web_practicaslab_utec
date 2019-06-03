@@ -25,6 +25,9 @@ class Maquina_api extends REST_Controller
         $est = $this->post("est");
         $ere = $this->post("ere");
         $ali = $this->post("ali");
+        $l = $this->post("l");
+        $f = $this->post("f");
+        $c = $this->post("c");
         $data = array(
             'lab' => (int)$codlab,
             'fil' => (int)$fil,
@@ -32,6 +35,9 @@ class Maquina_api extends REST_Controller
             'est' => $est,
             'ere' => $ere,
             'ali' => $ali,
+            'l' => 0,
+            'f' => 0,
+            'c' => 0,
         );
         $list = $this->MaquinaModel->getListaMaquinas($data);
         if(!is_null($list)){
