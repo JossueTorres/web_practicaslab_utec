@@ -28,23 +28,8 @@
 </style>
 
 <div class="right_col" role="main">
+  <h1><?php echo $this->session->userdata('usrlabnom'); ?></h1>
   <div class="">
-    <form action="<?php echo base_url('c_laboratorio/ControlLaboratorio/index'); ?>" method="POST">
-      <div class="col-md-4 col-sm-12">
-        <select name="txtcodlab" id="txtcodlab" class="form-control ddl_buscar_lab_mapa">
-          <?php if (!empty($Lista2)) {
-            foreach ($Lista2 as $item) {
-              foreach ($item as $lb) { ?>
-                <option value="<?php echo $lb->lab_codigo; ?>"><?php echo $lb->lab_nombre; ?></option>
-              <?php }
-          }
-        }  ?>
-        </select>
-      </div>
-      <div class="col-md-4">
-        <button type="submit" class="btn btn-success btn_buscar_lab_mapa">Buscar </button>
-      </div>
-    </form>
     <div class="clearfix"></div>
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -56,8 +41,7 @@
           <div class="x_content" style="text-align: center;">
             <table class=" table-responsive table-striped table">
               <tbody>
-                <?php if (!empty($Lista1)) {
-                  foreach ($Lista1 as $resp) {
+                <?php if (!empty($resp)) {
                     $cont = 1;
                     $filaActual = 0;
                     foreach ($resp as $maq) {
@@ -115,7 +99,7 @@
                   </div>
                   </td>
                 <?php
-              }
+              
             }
           }
         }  ?>
