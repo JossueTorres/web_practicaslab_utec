@@ -16,30 +16,29 @@ class Usuario_api extends REST_Controller
         $this->load->model("m_admin/UsuarioModel");
     }
 
-    public function listLaboratorios_get()
+    public function listUsuarios_get()
     {
         //ponemos lo que venga de los filtros;
-        $usr = $this->post("txtUsuario");
-        $cod = $this->post("txtCodigo");
-        $nom = $this->post("txtNombre");
-        $est = $this->post("txtEstado");
-        $con = $this->post("txtConfirma");
-        $codtip = $this->post("ddlcodtip");
-        $fcod = $this->post("txtfecha");
+        $usr = $this->post("usr");
+        $cod = $this->post("cod");
+        $nom = $this->post("nom");
+        $est = $this->post("est");
+        $con = $this->post("con");
+        $codtip = $this->post("tip");
+        $fcod = $this->post("fcod");
         $data = array(
             'usr' => $usr,
             'cod' => $cod,
             'nom' => $nom,
             'est' => $est,
             'con' => $con,
-            'codtip' => $codtip,
+            'tip' => $codtip,
             'fcod' => $fcod,
         );
         $list = $this->UsuarioModel->getListaUsuarios($data);
         if (!is_null($list)) {
             $this->response(array('resp' => $list), 200);
         } else {
-
             $this->response(array('resp' => 'No hay registros'), 404);
         }
     }

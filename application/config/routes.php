@@ -67,6 +67,11 @@ $route['Laboratorios'] = 'c_admin/Laboratorios/index';
 $route['Laboratorios/Guardar'] = 'c_admin/Laboratorios/guardarDatos';
 $route['Laboratorios/Borrar'] = 'c_admin/Laboratorios/borrarDatos';
 $route['Laboratorios/crearMaquinas'] = 'c_admin/Laboratorios/crearMaquinas';
+
+//Inicios
+$route['Admin/Inicio'] = 'c_admin/Inicio/index';
+$route['Alumno/Inicio'] = 'c_estudiante/Inicio/index';
+$route['Lab/Inicio'] = 'c_laboratorio/Inicio/index';
 //_____________________________________________________________________________________________
 
 
@@ -121,7 +126,7 @@ $route['TUsuario/guardarDatos']['POST'] = 'apis/admin/TipoUsuario_api/guardarDat
 $route['TUsuario/borrarDatos']['POST'] = 'apis/admin/TipoUsuario_api/borrarDatos';
 
 //Crud Usuario
-$route['Usuario/Listado']['POST'] = 'apis/admin/Usuario_api/index';
+$route['Usuario/Listado']['POST'] = 'apis/admin/Usuario_api/listUsuarios';
 $route['Usuario/guardarDatos']['POST'] = 'apis/admin/Usuario_api/guardarDatos';
 $route['Usuario/borrarDatos']['POST'] = 'apis/admin/Usuario_api/borrarDatos';
 //_____________________________________________________________________________________________

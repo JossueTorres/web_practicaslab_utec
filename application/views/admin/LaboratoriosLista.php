@@ -12,10 +12,16 @@
                     <div class="x_content">
                         <div class="row">
                             <form action="<?php echo base_url('Laboratorios'); ?>" method="POST">
-                                <div class="col-xs-3">
+                                <div class="col-sm-3 col-xs-12">
+                                    <label>Nombre</label>
                                     <input type="text" name="txtNomFil" id="txtNomFil" class="form-control" placeholder="Nombre">
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-sm-2 col-xs-12">
+                                <label>Acrónimo</label>
+                                    <input type="text" name="txtAcrFil" id="txtAcrFil" class="form-control" placeholder="Acrónimo">
+                                </div>
+                                <div class="col-sm-3 col-xs-12">
+                                <label>Edificio</label>
                                     <select name="ddlEdfFil" id="ddlEdfFil" class="form-control ddlEdfFil">
                                         <option value="">(Todos)</option>
                                         <?php if (!empty($lst2)) {
@@ -25,14 +31,16 @@
                                     }  ?>
                                     </select>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-sm-2 col-xs-12">
+                                <label>Estado</label>
                                     <select name="ddlEstFil" id="ddlEstFil" class="form-control ddlEstFil">
                                         <option value="">(Todos)</option>
                                         <option value="A">Habilitado</option>
                                         <option value="I">Deshabilitado</option>
                                     </select>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-sm-2 col-xs-12">
+                                    <br>
                                     <button type="submit" class="btn btn-success">Buscar</button>
                                 </div>
                             </form>
@@ -80,8 +88,8 @@
                                                                                                                             else echo 'Deshabilitado'; ?></label></td>
                                                             <td>
                                                                 <!-- <button class="btn btn-sm btn-info" codigo="<?php echo $lb->lab_codigo; ?>" type="button"><span class="fa fa-eye"></span></button> -->
-                                                                <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $lb->lab_codigo ?>','<?php echo $lb->lab_codedf ?>','<?php echo $lb->lab_nombre ?>','<?php echo $lb->lab_acronimo ?>','<?php echo $lb->lab_filas ?>','<?php echo $lb->lab_columnas ?>','<?php echo $lb->lab_latitud ?>','<?php echo $lb->lab_longitud ?>','<?php echo $lb->lab_estado ?>');">Modificar</a>
-                                                                <a name="btnCrear" id="btnCrear" class="btn btn-info btn-xs" onclick="javascript: crear('<?php echo $lb->lab_codigo ?>','<?php echo $lb->lab_filas ?>','<?php echo $lb->lab_columnas ?>','<?php echo $lb->lab_acronimo ?>');">Crear Máquinas</a>
+                                                                <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $lb->lab_codigo ?>','<?php echo $lb->lab_codedf ?>','<?php echo $lb->lab_nombre ?>','<?php echo $lb->lab_acronimo ?>','<?php echo $lb->lab_filas ?>','<?php echo $lb->lab_columnas ?>','<?php echo $lb->lab_latitud ?>','<?php echo $lb->lab_longitud ?>','<?php echo $lb->lab_estado ?>');" title="Editar Laboratorio"><i class="fa fa-edit"></i></a>
+                                                                <a name="btnCrear" id="btnCrear" class="btn btn-info btn-xs" onclick="javascript: crear('<?php echo $lb->lab_codigo ?>','<?php echo $lb->lab_filas ?>','<?php echo $lb->lab_columnas ?>','<?php echo $lb->lab_acronimo ?>');" title="Crear o actualizar máquinas del Laboratorio"><i class="fa fa-desktop"></i>&nbsp;<i class="fa fa-refresh"></i></a>
                                                             </td>
                                                             <td>
                                                                 <input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php echo $lb->lab_codigo; ?>" />

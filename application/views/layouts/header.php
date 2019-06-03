@@ -48,6 +48,30 @@
   </style>
   <!-- jQuery -->
   <script src="<?php echo base_url(); ?>assets/template/jquery/dist/jquery.min.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+  <!-- Add additional services that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBpHUZPHz4Vzm_tazZjBVxcHI_U5NfyvHA",
+      authDomain: "practicas-df991.firebaseapp.com",
+      databaseURL: "https://practicas-df991.firebaseio.com",
+      projectId: "practicas-df991",
+      storageBucket: "practicas-df991.appspot.com",
+      messagingSenderId: "1057359215817",
+      appId: "1:1057359215817:web:e14cde41471629df"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
 </head>
 
 <body class="nav-md">
@@ -56,7 +80,7 @@
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="#" class="site_title"><i class="fa fa-shopping-bag "></i> <span>PRACTICAS</span></a>
+            <a href="Inicio" class="site_title"><i class="fa fa-shopping-bag "></i> <span>PRACTICAS</span></a>
           </div>
 
           <div class="clearfix"></div>

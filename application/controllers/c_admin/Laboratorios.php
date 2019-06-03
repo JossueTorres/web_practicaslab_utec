@@ -154,7 +154,7 @@ class Laboratorios extends CI_Controller
             curl_setopt($ch, CURLOPT_AUTOREFERER, true);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
             curl_setopt($ch, CURLOPT_MAXREDIRS, 20);
-            curl_setopt($ch, CURLOPT_POST, 4);
+            curl_setopt($ch, CURLOPT_POST, 1);
             //_________________________________________________________________
 
             $postData =  'lab=' . $id;

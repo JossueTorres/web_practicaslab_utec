@@ -25,4 +25,9 @@ class UsuarioModel extends CI_Model {
         return $result;
     }
 
+    public function Login($data){
+        $result = $this->db->query("CALL proc_crud_usuario(1,?,?,?,?,?,?,?)", $data);
+        return $result->result();
+    }
+
 }
