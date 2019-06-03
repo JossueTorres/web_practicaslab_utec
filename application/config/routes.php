@@ -58,15 +58,15 @@ $route['translate_uri_dashes'] = FALSE;
 //Rutas Controladores
 
 //Crud Edificios
-$route['Edificios'] = 'c_admin/Edificio/index';
-$route['Edificios/Guardar'] = 'c_admin/Edificio/guardarDatos';
-$route['Edificios/Borrar'] = 'c_admin/Edificio/borrarDatos';
+$route['Admin/Edificios'] = 'c_admin/Edificio/index';
+$route['Admin/Edificios/Guardar'] = 'c_admin/Edificio/guardarDatos';
+$route['Admin/Edificios/Borrar'] = 'c_admin/Edificio/borrarDatos';
 
 //Crud Laboratorios
-$route['Laboratorios'] = 'c_admin/Laboratorios/index';
-$route['Laboratorios/Guardar'] = 'c_admin/Laboratorios/guardarDatos';
-$route['Laboratorios/Borrar'] = 'c_admin/Laboratorios/borrarDatos';
-$route['Laboratorios/crearMaquinas'] = 'c_admin/Laboratorios/crearMaquinas';
+$route['Admin/Laboratorios'] = 'c_admin/Laboratorios/index';
+$route['Admin/Laboratorios/Guardar'] = 'c_admin/Laboratorios/guardarDatos';
+$route['Admin/Laboratorios/Borrar'] = 'c_admin/Laboratorios/borrarDatos';
+$route['Admin/Laboratorios/crearMaquinas'] = 'c_admin/Laboratorios/crearMaquinas';
 
 //Inicios
 $route['Admin/Inicio'] = 'c_admin/Inicio/index';
@@ -74,9 +74,16 @@ $route['Alumno/Inicio'] = 'c_estudiante/Inicio/index';
 $route['Lab/Inicio'] = 'c_laboratorio/Inicio/index';
 
 //Crud Practicas
-$route['Practicas'] = 'c_laboratorio/ProgramarPractica/index';
-$route['Practicas/Guardar'] = 'c_laboratorio/ProgramarPractica/guardarDatos';
-$route['Practicas/Borrar'] = 'c_laboratorio/ProgramarPractica/borrarDatos';
+$route['Lab/Practicas'] = 'c_laboratorio/ProgramarPractica/index';
+$route['Lab/Practicas/Guardar'] = 'c_laboratorio/ProgramarPractica/guardarDatos';
+$route['Lab/Practicas/Borrar'] = 'c_laboratorio/ProgramarPractica/borrarDatos';
+
+//Crud Mis Laboratorios
+$route['Lab/MiLaboratorio'] = 'c_laboratorio/ControlLaboratorio/index';
+// $route['MiLaboratorio/Guardar'] = 'c_laboratorio/ControlLaboratorio/guardarDatos';
+// $route['MiLaboratorio/Borrar'] = 'c_laboratorio/ControlLaboratorio/borrarDatos';
+
+$route['Logout'] = 'Auth/logout';
 //_____________________________________________________________________________________________
 
 

@@ -6,9 +6,11 @@ class Laboratorio extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		//verificar la session de usuario
+		$tip = (int)$this->session->userdata("usrtipo");
 		//verificar la session de usuario
 		if (!$this->session->userdata("login")) {
+			redirect(base_url());
+		} else if ($tip != 1) {
 			redirect(base_url());
 		}
 	}
@@ -27,7 +29,7 @@ class Laboratorio extends CI_Controller
 			'lon' => 0,
 			'nom' => $this->input->post("txtNomFil"),
 		);
-		$_pa = array('cod'=>0,'nom'=>'','acr'=>'','est'=>'');
+		$_pa = array('cod' => 0, 'nom' => '', 'acr' => '', 'est' => '');
 		//_________________________________________________________________
 		//_________________________________________________________________
 		//Recojo y arreglo los parametros
@@ -60,7 +62,7 @@ class Laboratorio extends CI_Controller
 			//_________________________________________________________________
 			//Obtenemos el resultado
 			//_________________________________________________________________
-			$data['lst'.$cont] = json_decode(curl_exec($ch));
+			$data['lst' . $cont] = json_decode(curl_exec($ch));
 		}
 		//cerramos el Curl
 		curl_close($ch);

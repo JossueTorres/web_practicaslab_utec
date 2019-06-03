@@ -7,8 +7,11 @@ class Edificio extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$tip = (int)$this->session->userdata("usrtipo");
 		//verificar la session de usuario
 		if (!$this->session->userdata("login")) {
+			redirect(base_url());
+		} else if ($tip != 1) {
 			redirect(base_url());
 		}
 	}
@@ -117,7 +120,7 @@ class Edificio extends CI_Controller
 		curl_close($ch);
 		//_________________________________________________________________
 		// echo $data;
-		header('location:' . base_url('Edificios'));
+		header('location:' . base_url('Admin/Edificios'));
 	}
 
 	public function borrarDatos()
@@ -143,7 +146,7 @@ class Edificio extends CI_Controller
 		//_________________________________________________________________
 
 		foreach ($ids as $id) {
-			$postData =  'cod=' . $id . '&nom=&acr=&est=';			
+			$postData =  'cod=' . $id . '&nom=&acr=&est=';
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
 			curl_exec($ch);
 		}
@@ -154,6 +157,6 @@ class Edificio extends CI_Controller
 		//cerramos el Curl
 		curl_close($ch);
 		//_________________________________________________________________
-		header('location:' . base_url('Edificios'));
+		header('location:' . base_url('Admin/Edificios'));
 	}
 }

@@ -11,17 +11,17 @@
                     </div>
                     <div class="x_content">
                         <div class="row">
-                            <form action="<?php echo base_url('Laboratorios'); ?>" method="POST">
+                            <form action="<?php echo base_url('Admin/Laboratorios'); ?>" method="POST">
                                 <div class="col-sm-3 col-xs-12">
                                     <label>Nombre</label>
                                     <input type="text" name="txtNomFil" id="txtNomFil" class="form-control" placeholder="Nombre">
                                 </div>
                                 <div class="col-sm-2 col-xs-12">
-                                <label>Acrónimo</label>
+                                    <label>Acrónimo</label>
                                     <input type="text" name="txtAcrFil" id="txtAcrFil" class="form-control" placeholder="Acrónimo">
                                 </div>
                                 <div class="col-sm-3 col-xs-12">
-                                <label>Edificio</label>
+                                    <label>Edificio</label>
                                     <select name="ddlEdfFil" id="ddlEdfFil" class="form-control ddlEdfFil">
                                         <option value="">(Todos)</option>
                                         <?php if (!empty($lst2)) {
@@ -32,7 +32,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 col-xs-12">
-                                <label>Estado</label>
+                                    <label>Estado</label>
                                     <select name="ddlEstFil" id="ddlEstFil" class="form-control ddlEstFil">
                                         <option value="">(Todos)</option>
                                         <option value="A">Habilitado</option>
@@ -55,7 +55,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <form id='frm_del_laboratorio' name="frm_del_laboratorio" action="<?php echo base_url('Laboratorios/Borrar'); ?>" method="POST">
+                                <form id='frm_del_laboratorio' name="frm_del_laboratorio" action="<?php echo base_url('Admin/Laboratorios/Borrar'); ?>" method="POST">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover" id="tabla">
                                             <thead>
@@ -66,11 +66,11 @@
                                                     <th># FILAS</th>
                                                     <th># COLUMNAS</th>
                                                     <th>ESTADO</th>
-                                                    <th style="text-align:center; ">
+                                                    <th style="text-align:center;">
                                                         ACCIONES
                                                     </th>
-                                                    <th style="text-align:center; "> 
-                                                        <button class="btn btn-danger btn-xs" onclick="return confimar('borrar');">BORRAR</button>
+                                                    <th style="text-align:center;">
+                                                        <button type="submit" class="btn btn-danger btn-xs pull-right" title="Eliminar Registros" onclick="return confimar('borrar');"><label class="fa fa-trash"></label></button>
                                                         <input type="checkbox" name="todo" id="todo" class="checkbox" />
                                                     </th>
                                                 </tr>
@@ -123,7 +123,7 @@
                 <h4 class="modal-title">LABORATORIO</h4>
             </div>
             <div class="modal-body">
-                <form id='frm_laboratorio' name="frm_laboratorio" action="<?php echo base_url('Laboratorios/Guardar'); ?>" method="POST">
+                <form id='frm_laboratorio' name="frm_laboratorio" action="<?php echo base_url('Admin/Laboratorios/Guardar'); ?>" method="POST">
                     <input type="text" name="codlab" id="codlab" class="codlab hidden" value="0">
                     <div class="form-row">
                         <div class="form-group col-md-8 col-sm-12 col-xs-12">
@@ -221,7 +221,7 @@
                 <h4 class="modal-title">CREAR MÁQUINAS</h4>
             </div>
             <div class="modal-body">
-                <form id='frm_maquinas' name="frm_maquinas" action="<?php echo base_url('Laboratorios/crearMaquinas'); ?>" method="POST">
+                <form id='frm_maquinas' name="frm_maquinas" action="<?php echo base_url('Admin/Laboratorios/crearMaquinas'); ?>" method="POST">
                     <input type="text" name="lblLab" id="lblLab" class="hidden lblLab">
                     <input type="text" name="lblFil" id="lblFil" class="hidden lblFil">
                     <input type="text" name="lblCol" id="lblCol" class="hidden lblCol">
@@ -249,6 +249,7 @@
     function mostrarModal() {
         $("#modal-laboratorio").modal('show');
     };
+
     function mostrarModalMaq() {
         $("#modal-maq").modal('show');
     };

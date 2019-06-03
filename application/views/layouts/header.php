@@ -13,6 +13,10 @@
 
   <!-- Bootstrap -->
   <link href="<?php echo base_url(); ?>assets/template/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="<?php echo base_url(); ?>assets/template/jquery-ui-1.9.2/css/ui-darkness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="<?php echo base_url(); ?>assets/template/wickedpicker/dist/wickedpicker.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="<?php echo base_url(); ?>assets/template/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- NProgress -->

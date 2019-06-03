@@ -6,11 +6,13 @@ class Laboratorios extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        //verificar la session de usuario
-        //verificar la session de usuario
-        if (!$this->session->userdata("login")) {
-            redirect(base_url());
-        }
+        $tip = (int)$this->session->userdata("usrtipo");
+		//verificar la session de usuario
+		if (!$this->session->userdata("login")) {
+			redirect(base_url());
+		} else if ($tip != 1) {
+			redirect(base_url());
+		}
     }
 
     public function index()
@@ -67,7 +69,7 @@ class Laboratorios extends CI_Controller
             $cont = $cont + 1;
         }
         //cerramos el Curl
-        // curl_close($ch);
+        curl_close($ch);
         // //_________________________________________________________________
         // var_dump($result);
         // // var_dump("--------------------------------------------------------------");
@@ -131,7 +133,7 @@ class Laboratorios extends CI_Controller
         curl_close($ch);
         //_______________________________________________________________________________________________________________________________________________________
 
-        header('location:' . base_url('Laboratorios'));
+        header('location:' . base_url('Admin/Laboratorios'));
     }
 
     public function borrarDatos()
@@ -191,7 +193,7 @@ class Laboratorios extends CI_Controller
         //cerramos el Curl
         curl_close($ch);
         //_________________________________________________________________
-        header('location:' . base_url('Laboratorios'));
+        header('location:' . base_url('Admin/Laboratorios'));
     }
 
     public function crearMaquinas()
@@ -248,6 +250,6 @@ class Laboratorios extends CI_Controller
             }
         }
         curl_close($ch);
-        header('location:' . base_url('Laboratorios'));
+        header('location:' . base_url('Admin/Laboratorios'));
     }
 }

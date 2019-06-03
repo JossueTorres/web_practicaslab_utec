@@ -11,7 +11,7 @@
           </div>
           <div class="x_content">
             <div class="row">
-              <form action="<?php echo base_url('c_admin/Edificio'); ?>" method="POST">
+              <form action="<?php echo base_url('Admin/Edificios'); ?>" method="POST">
                 <div class="col-xs-3">
                   <input type="text" name="txtNomFil" id="txtNomFil" class="form-control" placeholder="Nombre">
                 </div>
@@ -30,7 +30,7 @@
             <hr>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <form id='frm_del_edificio' name="frmdel" action="<?php echo base_url('Edificios/Borrar'); ?>" method="POST">
+                <form id='frm_del_edificio' name="frmdel" action="<?php echo base_url('Admin/Edificios/Borrar'); ?>" method="POST">
                   <div class="table-responsive">
                     <table class="table table-striped table-hover" id="tabla">
                       <thead>
@@ -40,8 +40,8 @@
                           <th>ACRÓNIMO</th>
                           <th>ESTADO</th>
                           <th>ACCIONES</th>
-                          <th>
-                            <div class="center-block"><input type="checkbox" name="todo" id="todo" class="checkbox" />&nbsp;<button class="btn btn-danger btn-xs"  onclick="return confimar('borrar');">BORRAR</button></div>
+                          <th style="text-align:center;">
+                            <div class="center-block"><input type="checkbox" name="todo" id="todo" class="checkbox" />&nbsp;<button class="btn btn-danger btn-xs pull-right" title="Eliminar Registros" onclick="return confimar('borrar');"><label class="fa fa-trash"></label></button></div>
                           </th>
                         </tr>
                       </thead>
@@ -58,7 +58,7 @@
                               <td class="text-center">
                                 <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $ed->edf_codigo ?>','<?php echo $ed->edf_nombre ?>','<?php echo $ed->edf_acronimo ?>','<?php echo $ed->edf_estado ?>');">Modificar</a>
                               </td>
-                              <td>
+                              <td style="text-align:center;">
                                 <input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php echo $ed->edf_codigo; ?>" />
                               </td>
                             </tr>
@@ -87,7 +87,7 @@
         <h4 class="modal-title">EDIFICIO</h4>
       </div>
       <div class="modal-body">
-        <form id='frm_edificio' name="frm" action="<?php echo base_url('Edificios/Guardar'); ?>" method="POST">
+        <form id='frm_edificio' name="frm" action="<?php echo base_url('Admin/Edificios/Guardar'); ?>" method="POST">
           <input type="text" name="codedf" id="codedf" class="codedf hidden" value="0">
           <div class="form-row">
             <div class="form-group col-md-6 col-sm-6 col-xs-12">

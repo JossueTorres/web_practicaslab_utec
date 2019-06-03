@@ -13,7 +13,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Perfil</a></li>
+                    <li><a href="javascript:;">&nbsp;Perfil</a></li>
                     <!-- <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
@@ -21,7 +21,7 @@
                       </a>
                     </li> -->
                     <!-- <li><a href="javascript:;">Ayuda</a></li> -->
-                    <li><a onclick="javascript: return singOut();" href="<?php echo base_url(); ?>auth/logout"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
+                    <li><a onclick="javascript: return singOut();" href="<?php echo base_url('Logout'); ?>"><i class="fa fa-sign-out pull-right"></i>&nbsp;Cerrar Sesión</a></li>
                   </ul>
                 </li>
                 <!-- <li role="presentation" class="dropdown">

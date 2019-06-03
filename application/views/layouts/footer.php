@@ -11,6 +11,12 @@
 
 <!-- Bootstrap -->
 <script src="<?php echo base_url(); ?>assets/template/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- JQuery UI -->
+<script src="<?php echo base_url(); ?>assets/template/jquery-ui-1.9.2/js/jquery-ui-1.9.2.custom.min.js"></script>
+<!-- Wickedpicker -->
+<script src="<?php echo base_url(); ?>assets/template/wickedpicker/dist/wickedpicker.min.js"></script>
+<!-- Wickedpicker -->
+<!-- <script src="<?php echo base_url(); ?>assets/template/timepicker/jquery.timepicker.js"></script> -->
 <!-- FastClick -->
 <script src="<?php echo base_url(); ?>assets/template/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->

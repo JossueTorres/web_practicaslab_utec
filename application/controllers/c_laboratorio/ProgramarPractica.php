@@ -7,37 +7,43 @@ class ProgramarPractica extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$tip = (int)$this->session->userdata("usrtipo");
 		//verificar la session de usuario
 		if (!$this->session->userdata("login")) {
+			redirect(base_url());
+		} else if ($tip != 2) {
 			redirect(base_url());
 		}
 	}
 
 	public function index()
 	{
-		//_________________________________________________________________
-		//Recojo y arreglo los parametros
 		$_param = array(
 			'cod' => 0,
-			'nom' => $this->input->post("txtNomFil"),
-			'acr' => $this->input->post("txtAcrFil"),
-			'est' => $this->input->post("ddlEstFil"),
+			'lab' => $this->session->userdata("usrlab"),
+			'fini' => '',
+			'hini' => '',
+			'ffin' => '',
+			'hfin' => '',
+			'lun' => 0,
+			'mar' => 0,
+			'mie' => 0,
+			'jue' => 0,
+			'vie' => 0,
+			'sab' => 0,
+			'dom' => 0,
 		);
+		//_________________________________________________________________
+		//_________________________________________________________________
+		//Recojo y arreglo los parametros
+		$url = URLWS . 'Config/Listado';
+		//_________________________________________________________________
 		$postData = '';
 		//Creamos arreglo nombre/valor separado por &
 		foreach ($_param as $k => $v) {
 			$postData .= $k . '=' . $v . '&';
 		}
 		rtrim($postData, '&');
-		//_________________________________________________________________
-
-
-		//_________________________________________________________________
-		//Recojo y arreglo los parametros
-		$url = URLWS . 'Config/Listado';
-		//_________________________________________________________________
-
-
 		//_________________________________________________________________
 		//creamos nuevo recurso cURL y su Conf (Esto mejor que ni se toque siempre va)
 		$ch = curl_init($url);
@@ -52,15 +58,11 @@ class ProgramarPractica extends CI_Controller
 		curl_setopt($ch, CURLOPT_POST, count($_param));
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
 		//_________________________________________________________________
-
-
 		//Obtenemos el resultado
 		//_________________________________________________________________
 		$data = json_decode(curl_exec($ch));
 		//cerramos el Curl
 		curl_close($ch);
-		//_________________________________________________________________
-
 
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
@@ -143,7 +145,7 @@ class ProgramarPractica extends CI_Controller
 		//_________________________________________________________________
 
 		foreach ($ids as $id) {
-			$postData =  'cod=' . $id . '&nom=&acr=&est=';			
+			$postData =  'cod=' . $id . '&nom=&acr=&est=';
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
 			curl_exec($ch);
 		}
