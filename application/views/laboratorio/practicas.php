@@ -6,7 +6,7 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2 class="fuentetitulo">PRÁCTICAS LIBRES <small>LISTADO</small></h2>
+            <h2 class="fuentetitulo">PRÁCTICAS LIBRES PARA&nbsp;<?php echo strtoupper($this->session->userdata("usrlabnom")); ?><small>LISTADO</small></h2>
             <div class="clearfix"></div>
           </div>
           <!-- <div class="x_content">
@@ -44,7 +44,7 @@
                     <table class="table table-striped table-hover" id="tabla">
                       <thead>
                         <tr>
-                          <th>LAB</th>
+                          <!-- <th>LAB</th> -->
                           <th>FECHA</th>
                           <th>HORA</th>
                           <th>L</th>
@@ -68,7 +68,7 @@
                             $ffin = preg_split("/\ /", $cop->cop_fecha_hora_fin)[0];
                             $hfin = preg_split("/\ /", $cop->cop_fecha_hora_fin)[1]; ?>
                             <tr>
-                              <td><?php echo $cop->cop_codlab; ?></td>
+                              <!-- <td><?php echo $cop->cop_codlab; ?></td> -->
                               <td><b>DESDE:</b>&nbsp;<?php echo $fini; ?><br>
                                 <b>HASTA:</b>&nbsp;<?php echo $ffin; ?></td>
                               <td><b>DESDE:</b>&nbsp;<?php echo $hini; ?><br>

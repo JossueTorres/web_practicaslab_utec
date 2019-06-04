@@ -74,27 +74,27 @@ class ProgramarPractica extends CI_Controller
 	public function guardarDatos()
 	{
 		$chk = $this->input->post('chkD');
-		$l = 0; $m = 0; $x= 0; $j = 0; $v = 0; $s = 0; $d = 0;
+		$l = 1; $m = 1; $x= 1; $j = 1; $v = 1; $s = 1; $d = 1;
 		foreach ($chk as $val) {
-			if ($val = 1) {
+			if ($val == 1) {
 				$l = 2;
 			}
-			if ($val = 2) {
+			if ($val == 2) {
 				$m = 2;
 			}
-			if ($val = 3) {
+			if ($val == 3) {
 				$x = 2;
 			}
-			if ($val = 4) {
+			if ($val == 4) {
 				$j = 2;
 			}
-			if ($val = 5) {
+			if ($val == 5) {
 				$v = 2;
 			}
-			if ($val = 6) {
+			if ($val == 6) {
 				$s = 2;
 			}
-			if ($val = 7) {
+			if ($val == 7) {
 				$d = 2;
 			}
 		}		
@@ -103,7 +103,7 @@ class ProgramarPractica extends CI_Controller
 		//Recojo y arreglo los parametros		
 		$_param = array(
 			'cod' => $this->input->post('codcop'),
-			'lab' => $this->input->post('codlab'),
+			'lab' => $this->session->userdata("usrlab"),
 			'fini' => $this->input->post('txtFini'),
 			'hini' => $this->input->post('txtHini'),
 			'ffin' => $this->input->post('txtFfin'),
@@ -149,7 +149,7 @@ class ProgramarPractica extends CI_Controller
 		curl_close($ch);
 		//_________________________________________________________________
 		// echo $data;
-		// header('location:' . base_url('Lab/Practicas'));
+		header('location:' . base_url('Lab/Practicas'));
 	}
 
 	public function borrarDatos()
