@@ -14,6 +14,7 @@ include_once("../classes/class.Database.php");
         $sql .= " AND time(cop_fecha_hora_inicia) <= time(NOW())";
         $sql .= " AND time(cop_fecha_hora_fin) >= time(NOW())";
         $sql .= " AND cop_est_reg = 'A'";
+        $sql .= " AND maq_estado_maquina = 'A'";
         $sql .= " AND ((WEEKDAY(NOW()) = 0 AND cop_lunes = 2)";
         $sql .= " OR (WEEKDAY(NOW()) = 1 AND cop_martes = 2)";
         $sql .= " OR (WEEKDAY(NOW()) = 2 AND cop_miercoles = 2)";

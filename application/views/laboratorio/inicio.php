@@ -6,7 +6,26 @@
                 <h3 class="fuentetitulo">INICIO</h3>
               </div>
 
-
+              <?php if (!empty($resp)) {
+                    $Uso = 0;
+                    $Dis = 0;
+                    $Res = 0;
+                    foreach ($resp as $maq) {
+                        if ($maq->maq_estado_maquina == "A") {
+                          if ($maq->maq_estado_reserva == "I") {
+                            $Res ++;
+                          }
+                          if ($maq->maq_estado_reserva == "D") {
+                            $Dis ++;
+                          }
+                          if ($maq->maq_estado_reserva == "O") {
+                            $Uso ++;
+                          }
+                        }
+                    }
+                  }
+                      ?>
+                      
             </div>
 
             <div class="clearfix"></div>
@@ -20,57 +39,29 @@
                   </div>
                   <div class="x_content">
                   <div class="row top_tiles">
+                    
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-users"></i></div>
-                  <div class="count">0</div>
-                  <h3>Usuarios</h3>
-                 <p> <a href="" class="small-box-footer">Ver Practicas <i class="fa fa-arrow-circle-right"></i></a></p>
-
+                  <div class="icon"><i class="fa fa-desktop"></i></div>
+                  <div class="count"><?php echo $Uso; ?></div>
+                  <h4>&nbsp&nbsp Maquinas en Uso</h4>
                 </div>
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-users"></i></div>
-                  <div class="count">0</div>
-                  <h3>Usuarios</h3>
-                 <p> <a href="" class="small-box-footer">Ver Practicas <i class="fa fa-arrow-circle-right"></i></a></p>
-
-                </div>
-              </div>              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-users"></i></div>
-                  <div class="count">0</div>
-                  <h3>Usuarios</h3>
-                 <p> <a href="" class="small-box-footer">Ver Practicas <i class="fa fa-arrow-circle-right"></i></a></p>
-
-                </div>
-              </div>              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-users"></i></div>
-                  <div class="count">0</div>
-                  <h3>Usuarios</h3>
-                 <p> <a href="" class="small-box-footer">Ver Practicas <i class="fa fa-arrow-circle-right"></i></a></p>
-
+                  <div class="icon"><i class="fa fa-desktop"></i></div>
+                  <div class="count"><?php echo $Dis; ?></div>
+                  <h4>&nbsp&nbsp Maquinas Disponibles</h4>
                 </div>
               </div>
-
-
-            </div>
-
-                      <?php 
-                      $nick = "ede";
-                      echo "
-                      <td width='53'>
-                       
-                         <a href= 'javascript:abrirventana('".$nick."')'>
-                            
-                           <img src='images/lupa.jpg' border='0' width='23'>
-                         
-                         </a>
-                      </td>";
-                      
-                      ?>
+              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-desktop"></i></div>
+                  <div class="count"><?php echo $Res; ?></div>
+                  <h4>&nbsp&nbsp Maquinas Reservadas</h4>
+                </div>
+              </div>
+      </diV>
                   </div>
                 </div>
               </div>
