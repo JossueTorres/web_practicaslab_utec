@@ -42,9 +42,9 @@
                     
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-desktop"></i></div>
+                  <div class="icon"><i class="fa fa-users"></i></div>
                   <div class="count"><?php echo $Uso; ?></div>
-                  <h4>&nbsp&nbsp Maquinas en Uso</h4>
+                  <h4>&nbsp&nbsp Alumnos En Practicas</h4>
                 </div>
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -58,7 +58,7 @@
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-desktop"></i></div>
                   <div class="count"><?php echo $Res; ?></div>
-                  <h4>&nbsp&nbsp Maquinas Reservadas</h4>
+                  <h4>&nbsp&nbsp Maquinas Para Clase</h4>
                 </div>
               </div>
       </diV>

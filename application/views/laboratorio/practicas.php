@@ -1,3 +1,33 @@
+<style>
+.onCelda{
+  background: #A1F378;
+  height: auto;
+  width: auto;
+  text-align:center;
+  color:#000;
+}
+.onCelda:hover{
+  cursor: pointer;
+}
+.offCelda{
+  background: #E99F9F;
+  height: auto;
+  width: auto;
+  text-align:center;
+  color:#000;
+}
+.offCelda:hover{
+  cursor: pointer;
+}
+.disCelda{
+  background: #fafafa;
+  height: auto;
+  width: auto;
+  text-align:center;
+}
+</style>
+
+
 <!-- page content -->
 <div class="right_col" role="main">
   <div class="">
@@ -89,7 +119,7 @@
                                                     else echo "fa-square red"; ?>"></label></td>
                               <td class="text-center">
                                 <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $cop->cop_codigo ?>','<?php echo $fini ?>','<?php echo $ffin ?>','<?php echo $hini ?>','<?php echo $hfin ?>','<?php echo $cop->cop_lunes; ?>','<?php echo $cop->cop_martes; ?>','<?php echo $cop->cop_miercoles; ?>','<?php echo $cop->cop_jueves; ?>','<?php echo $cop->cop_viernes; ?>','<?php echo $cop->cop_sabado; ?>','<?php echo $cop->cop_domingo; ?>');"><i class="fa fa-edit"></i></a>
-                                <a name="btnListado" id="btnListado" class="btn btn-info btn-xs btnListado"><i class="fa fa-list"></i></a>
+                                <a name="btnListado" id="btnListado" ffin="<?php echo $ffin; ?>" fini="<?php echo $fini; ?>" lun="<?php echo $cop->cop_lunes; ?>" mar="<?php echo $cop->cop_martes; ?>" mie="<?php echo $cop->cop_miercoles; ?>" jue="<?php echo $cop->cop_jueves; ?>" vie="<?php echo $cop->cop_viernes; ?>" sab="<?php echo $cop->cop_sabado; ?>" dom="<?php echo $cop->cop_domingo; ?>" class="btn btn-info btn-xs btnListado"><i class="fa fa-list"></i></a>
                               </td>
                               <td style="text-align:center;">
                                 <input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php echo $cop->cop_codigo; ?>" />
@@ -217,19 +247,80 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">DETALLE PRÁCTICA</h4>
+        <h4 class="modal-title">DETALLE DE LA RESERVA</h4>
       </div>
       <div class="modal-body">
+            <table class=" table table-striped">
+                  <thead>
+                    <tr>
+                      <th style="text-align:center;">LUN</th>
+                      <th style="text-align:center;">MAR</th>
+                      <th style="text-align:center;">MIE</th>
+                      <th style="text-align:center;">JUE</th>
+                      <th style="text-align:center;">VIE</th>
+                      <th style="text-align:center;">SAB</th>
+                      <th style="text-align:center;">DOM</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="disCelda"><div></div></td>
+                      <td class="onCelda"><div>02-12 <br> 2019</div></td>
+                      <td class="disCelda"><div>03-12 <br> 2019</div></td>
+                      <td class="disCelda"><div>04-12 <br> 2019</div></td>
+                      <td class="disCelda"><div>05-12 <br> 2019</div></td>
+                      <td class="onCelda"><div>06-12 <br> 2019</div></td>
+                      <td class="onCelda"><div>07-12 <br> 2019</div></td>
+                    </tr>
 
+                  </tbody>
+            </table>
       </div>
     </div>
   </div>
 </div>
 
+<script src="http://momentjs.com/downloads/moment.min.js"></script>
 <script>
-  function mostrarModal() {
-    $("#modal-edificio").modal('show');
-  };
+//   function mostrarModal() {
+//     $("#modal-edificio").modal('show');
+//   };
+//   $(".btnListado").click( function() {
+//     var fi = $(this).attr("fini");
+//     var ff = $(this).attr("ffin");
+//     console.log(ff + "  "+fi);
+//     var Fecha_inicio = $.datepicker.formatDate('yy-dd-mm',new Date(fi));
+//     var Fecha_fin = $.datepicker.formatDate('yy-dd-mm',new Date(ff));
+//     var Dia_Inicia = new Date(Fecha_inicio).getDate(); 
+//     var lunes = $(this).attr("lun");
+//     var martes = $(this).attr("mar");
+//     var miercoles = $(this).attr("mie");
+//     var jueves = $(this).attr("jue");
+//     var viernes = $(this).attr("vie");
+//     var sabado = $(this).attr("sab");
+//     var domingo = $(this).attr("dom");
+//     //alert(Fecha_inicio.diff(Fecha_fin, 'days'));
+//    var  c_Fecha_inicio    = new Date(Fecha_inicio);
+//    var  c_Fecha_fin    = new Date(Fecha_fin);
+//   // Dia_Inicia =new Date(Dia_Inicia);
+// var day_as_milliseconds = 86400000;
+// var diff = c_Fecha_fin - c_Fecha_inicio;
+// var Diferencia_dias = diff / day_as_milliseconds;
+// var html = "";
+// for (let i = 1; i <= Diferencia_dias; i++) {
+//   const element = array[i];
+  
+// }
+
+
+// console.log(Dia_Inicia);
+// console.log(Fecha_fin + "  "+Fecha_inicio);
+// console.log(Diferencia_dias );
+
+
+
+//     $("#modal-listado").modal('show');
+//   });
 
   function cleanFields() {
     $('.codcop').attr("value", "0");
