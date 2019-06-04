@@ -65,9 +65,23 @@
             $("#modmap").append(html);
             $("#modal-map").modal('show');
           });
-          setInterval(GetMaquinasDisponibles, 5000);
-          GetMaquinasDisponibles();
+          setInterval(CambiarCantidadMaquinas, 3000);
 
+          GetMaquinasDisponibles();
+          var cont = 60;
+          function cambio_maquinas(lab,cant){
+            $('#Contenedor-maquinas .count').each(function(){
+                var cod = ($(this).attr("codigo"));
+                if(cod == lab){
+                  $(this).text(cant);
+                }
+            });
+            
+            //cont ++;
+
+           // $('#Contenedor-maquinas .count').text(cont);
+           // console.log($('#Contenedor-maquinas .count'));
+          }; 
           function GetMaquinasDisponibles() {
             $("#Contenedor-maquinas").empty();
             var urlbase = "<?php echo URLWS2; ?>";
@@ -83,7 +97,7 @@
                   content += '<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">';
                   content += '<div class="tile-stats">';
                   content += '<div class="icon"><i class="fa fa-desktop"></i></div>';
-                  content += '<div class="count">' + maquinas.Maquinas + '</div>';
+                  content += '<div codigo="'+ maquinas.lab_codigo +'" class="count">' + maquinas.Maquinas + '</div>';
                   content += '<center>';
                   content += '<h4>Maquinas Disponibles</h4>';
                   content += '</center>';
@@ -103,4 +117,24 @@
                 console.log("Fallo!");
               });
           };
+
+          function CambiarCantidadMaquinas() {
+            var urlbase = "<?php echo URLWS2; ?>";
+            $.ajax({
+                type: 'GET',
+                url: urlbase + 'GetMaquinasDisponibles.php',
+                dataType: 'json'
+              })
+              .done(function(data) {
+                data.maquinas.forEach(function(maquinas, index) {
+                  cambio_maquinas(maquinas.lab_codigo,maquinas.Maquinas);
+                });
+
+              })
+              .fail(function() {
+                console.log("Fallo!");
+              });
+          };
+
+
         </script>
