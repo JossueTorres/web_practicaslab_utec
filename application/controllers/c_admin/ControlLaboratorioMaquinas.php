@@ -22,6 +22,10 @@ class ControlLaboratorioMaquinas extends CI_Controller
 
 			$codigo = $this->input->post("lblcodlab");
 			$nombre = $this->input->post("lblnomlab");
+			$Mostrar = true;
+			if ($codigo == 0) {
+				$Mostrar =false;
+			}
 			//$_param = $val->p;
 			
 				//$codigo = 1;
@@ -82,11 +86,13 @@ class ControlLaboratorioMaquinas extends CI_Controller
 		
 		//$data["Lista2"]=array('a'=>0,'b'=>0,'c'=>0);
 		curl_close($ch);
-
+		if ($Mostrar == false) {
+			redirect(base_url("Admin/Laboratorios"));		
+		}
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
 		$this->load->view('layouts/nav');
-		$this->load->view('admin/laboratorioMaquinas', $data);
+		$this->load->view('admin/laboratorioMaquinas', $data);			
 		$this->load->view('layouts/footer');
 	}
 
