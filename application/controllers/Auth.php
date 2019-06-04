@@ -37,24 +37,70 @@ class Auth extends CI_Controller
 
 		$result = json_decode(file_get_contents($jsonUrl));
 		$codtip = $result->rol;
-		if (empty($codtip)) {
-			$codtip = "alumno";
-		}else{$codlab = 1;}		
+		$codlab = $result->codlab;		
 		$correo = $result->correo;
-		$nombre = $result->nombre;		
-		// $products = json_decode($data, true);
-		// var_dump($codtip);
-		// foreach ($products as $product) {
-		// 	print_r($product);
-		// }
+		$nombre = $result->nombres;
+
 		$data  = array(
 			'usrcorreo' => $correo,
 			'usrnombre' => $nombre,
 			'usrtipo' => $codtip,
-			'usrlab' => $codlab,
-			// 'usrlabnom' => $labnombre,
 			'login' => true,
 		);
+
+		//obtener el parametro de el mondre de laboratorio
+		if ($codtip == 'encargado') {
+			$_param = array(
+				'cod' => $codlab,
+				'edf' => 0,
+				'acr' => '',
+				'fil' => 0,
+				'col' => 0,
+				'lat' => 0,
+				'lon' => 0,
+				'nom' => '',
+				'est' => '',
+			);
+			$postData = '';
+			//Creamos arreglo nombre/valor separado por &
+			foreach ($_param as $k => $v) {
+				$postData .= $k . '=' . $v . '&';
+			}
+			rtrim($postData, '&');
+			//_________________________________________________________________
+			//_________________________________________________________________
+			//Recojo y arreglo los parametros
+			$url = URLWS . 'Laboratorio/Listado';
+			//_________________________________________________________________
+			//_________________________________________________________________
+			//creamos nuevo recurso cURL y su Conf (Esto mejor que ni se toque siempre va)
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_HEADER, false);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_USERAGENT, USERAGENTWS);
+			curl_setopt($ch, CURLOPT_COOKIE, COOKIECURL);
+			curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+			curl_setopt($ch, CURLOPT_MAXREDIRS, 20);
+			curl_setopt($ch, CURLOPT_POST, count($_param));
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+			//_________________________________________________________________
+			//Obtenemos el resultado    
+			$result = json_decode(curl_exec($ch));
+			//cerramos el Curl
+			curl_close($ch);
+			$objlab = $result->resp;
+			$labnombre = $objlab[0]->lab_nombre;
+			$data  = array(
+				'usrcorreo' => $correo,
+				'usrnombre' => $nombre,
+				'usrtipo' => $codtip,
+				'usrlab' => $codlab,
+				'usrlabnom' => $labnombre,
+				'login' => true,
+			);
+		}
 		$this->session->set_userdata($data);
 		// $user =  $this->session->userdata("usuario");
 		if ($codtip == "admin")
