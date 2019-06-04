@@ -93,8 +93,15 @@
             <input name='txtPass' id='txtPass' type="password" placeholder="Contraseña" class="form-control txtPass" />
           </div>
           <div class="panel-footer">
-            <button role="button" type="submit" class="hidden btn btnSingIn">Ingresar</button>
-            <label class="btn btnSingInDet">Ingresar</label>
+            <div class="row">
+              <div class="col-sm-12">
+                <button role="button" type="submit" class="hidden btn btnSingIn">Ingresar</button>
+                <label class="btn btn-success btnSingInDet">Ingresar</label>
+              </div>
+              <!-- <div class="col-sm-6">
+                <button role="button" type="submit" class="btn btn-success btnGoogle">Ingresar Google</button>
+              </div> -->
+            </div>
           </div>
         </form>
       </div>
@@ -128,6 +135,7 @@
   <script>
     var clickeado = false;
     var varidU = '';
+    var provider = new firebase.auth.GoogleAuthProvider();
 
     function toggleSignIn() {
       if (firebase.auth().currentUser) {
@@ -138,11 +146,19 @@
       var email = $(".txtUsr").val();
       var password = $(".txtPass").val();
       if (email.length < 4) {
-        swal({title:'Demasiado corto', text:'Las credenciales ingresadas con muy cortas al parecer', type:'error'});
+        swal({
+          title: 'Demasiado corto',
+          text: 'Las credenciales ingresadas con muy cortas al parecer',
+          type: 'error'
+        });
         return false;
       }
       if (password.length < 6) {
-        swal({title:'La contraseña es incorrecta', text:'La contraseña ingresada para el usuario es incorrecta', type:'error'});
+        swal({
+          title: 'La contraseña es incorrecta',
+          text: 'La contraseña ingresada para el usuario es incorrecta',
+          type: 'error'
+        });
         return false;
       }
       // Sign in with email and pass.
@@ -167,9 +183,17 @@
         var errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode === 'auth/wrong-password') {
-          swal({title:'La contraseña es incorrecta', text:'La contraseña ingresada para el usuario es incorrecta', type:'error'});
+          swal({
+            title: 'La contraseña es incorrecta',
+            text: 'La contraseña ingresada para el usuario es incorrecta',
+            type: 'error'
+          });
         } else if ('auth/user-not-found') {
-          swal({title:'No se encontró al usuario', text:'Este usuario no se encuentra dentro de la base de datos', type:'error'});
+          swal({
+            title: 'No se encontró al usuario',
+            text: 'Este usuario no se encuentra dentro de la base de datos',
+            type: 'error'
+          });
         } else {
           swal(errorCode + '\n' + errorMessage);
         }
@@ -179,6 +203,49 @@
         // [END_EXCLUDE]
       });
     }
+
+    function SignInGoogle() {
+
+    }
+
+    function SignInGoogle() {
+      if (!firebase.auth().currentUser) {
+        // [START createprovider]
+        var provider = new firebase.auth.GoogleAuthProvider();
+        // [END createprovider]
+        // [START addscopes]
+        provider.addScope('https://www.googleapis.com/auth/plus.login');
+        // [END addscopes]
+        // [START signin]
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+          // The signed-in user info.
+          var user = result.user;
+          // ...
+          console.log(user);
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          console.log(errorCode + ' \n' + errorMessage + '\n' + email + '\n' + credential);
+          // ...
+        });
+        // [END signin]
+      } else {
+        // [START signout]
+        firebase.auth().signOut();
+        // [END signout]
+      }
+      // [START_EXCLUDE]
+      // document.getElementById('quickstart-sign-in').disabled = true;
+      // [END_EXCLUDE]
+    }
+
     $(function() {
       $(".btnSingInDet").click(function(e) {
         clickeado = true;
@@ -193,6 +260,9 @@
         } else {
           e.preventDefault();
         }
+      });
+      $(".btnGoogle").click(function(e) {
+        SignInGoogle()
       });
     });
   </script>
