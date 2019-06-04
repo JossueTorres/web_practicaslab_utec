@@ -11,7 +11,7 @@ class Practica extends CI_Controller
 		//verificar la session de usuario
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
-		} else if ($tip != '') {
+		} else if ($tip != 'estudiante') {
 			redirect(base_url());
 		}
   }
