@@ -282,9 +282,9 @@
 
 <script src="http://momentjs.com/downloads/moment.min.js"></script>
 <script>
-//   function mostrarModal() {
-//     $("#modal-edificio").modal('show');
-//   };
+   function mostrarModal() {
+     $("#modal-edificio").modal('show');
+  };
 //   $(".btnListado").click( function() {
 //     var fi = $(this).attr("fini");
 //     var ff = $(this).attr("ffin");
