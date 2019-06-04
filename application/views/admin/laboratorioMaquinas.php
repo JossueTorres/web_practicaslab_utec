@@ -9,15 +9,6 @@
     max-height: 100px;
   }
 
-  .offPC {
-    background-color: #E99F9F;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    max-width: 100px;
-    max-height: 100px;
-  }
-
   .enabledPC {
     background-color: #E5D7D7;
     color: #fff;
@@ -28,10 +19,10 @@
 </style>
 
 <div class="right_col" role="main">
-  <h1><?php  foreach ($lista2 as $resp) {
+  <h2>Administrar <?php  foreach ($lista2 as $resp) {
     foreach ($lista2 as $resp) {
      echo $resp;
-    } }?></h1>
+    } }?></h2>
   <div class="">
     <div class="clearfix"></div>
     <div class="row">
@@ -50,17 +41,6 @@
                     $cont = 1;
                     $filaActual = 0;
                     foreach ($resp as $maq) {
-                      ?>
-                      <!-- <tr> 
-                              <td>codlab: <?php echo $maq->maq_codlab; ?></td>
-                              <td>fila:  <?php echo $maq->maq_fila; ?></td>
-                              <td>columna: <?php echo $maq->maq_columna; ?></td>
-                              <td>maq estado: <?php echo $maq->maq_estado_maquina; ?></td>
-                              <td>res estado: <?php echo $maq->maq_estado_reserva; ?></td>
-                              <td>alias: <?php echo $maq->maq_alias; ?></td>
-                            </tr>-->
-
-                      <?php
                       if ($cont == 1) {
                         $filaActual = $maq->maq_fila;
                         echo '<tr>';
@@ -71,36 +51,19 @@
                       }
                       echo '<td>';
                       if ($maq->maq_estado_maquina == "A") {
-                        if ($maq->maq_estado_reserva == "I") {
-                          echo '<div class="MAQ enabledPC" estado="I" codlab="' . $maq->maq_codlab . '" codfil="' . $maq->maq_fila . '" codcol="' . $maq->maq_columna . '">';
-                        } elseif ($maq->maq_estado_reserva == "O") {
-                          echo '<div class="MAQ offPC" estado="O"  codlab="' . $maq->maq_codlab . '" codfil="' . $maq->maq_fila . '" codcol="' . $maq->maq_columna . '">';
-                        } else {
-                          echo '<div class="MAQ onPC" estado="D"  codlab="' . $maq->maq_codlab . '" codfil="' . $maq->maq_fila . '" codcol="' . $maq->maq_columna . '">';
-                        }
+                        echo '<div class="MAQ onPC" estado="A" alias="'. $maq->maq_alias .'" codlab="' . $maq->maq_codlab . '" codfil="' . $maq->maq_fila . '" codcol="' . $maq->maq_columna . '"> '; 
                         ?>
-
-                        <center>
-                          <div class=""> <img src="https://pngimage.net/wp-content/uploads/2018/06/icone-informatique-png-1.png" alt="" width="40" height="40"></div>
-                        </center>
-                        <center>
-                          <h4><label href="#"><?php echo $maq->maq_alias; ?>-<?php echo $cont; ?></label></h4>
+                          <div class="ImagenMaq"> <img src="https://pngimage.net/wp-content/uploads/2018/06/icone-informatique-png-1.png" alt="" width="40" height="40"></div>
+                          <div class="ImagenPasio hidden"><img src="https://image.flaticon.com/icons/png/512/32/32523.png" alt="" width="40" height="40"></div>
+                          <h4><label>_</label></h4>
                   </div>
-                  <?php
-                  echo '<button  class="btn btn-block btn-default boton_c_ina"  codlab="' . $maq->maq_codlab . '" codfil="' . $maq->maq_fila . '" codcol="' . $maq->maq_columna . '"></button>'
-                  ?>
-                  </center>
                   </td>
                   <?php $cont++;
-                } else { ?>
-                  <div class="form-row">
-                    <div class="form-group col-md-1 col-sm-1 col-xs-1">
-                      <div class="">
-                        <center>
-                          <div class=""> <img src="" alt="" width="100px" height="10px"></div>
-
-                      </div>
-                    </div>
+                } else { 
+                  echo '<div class="MAQ enabledPC" estado="I" alias="'. $maq->maq_alias .'" codlab="' . $maq->maq_codlab . '" codfil="' . $maq->maq_fila . '" codcol="' . $maq->maq_columna . '">';  
+                         ?> <div class="ImagenMaq hidden"> <img src="https://pngimage.net/wp-content/uploads/2018/06/icone-informatique-png-1.png" alt="" width="40" height="40"></div>
+                          <div class="ImagenPasio "><img src="https://image.flaticon.com/icons/png/512/32/32523.png" alt="" width="40" height="40"></div>
+                          <h4><label>_</label></h4>
                   </div>
                   </td>
                 <?php
@@ -119,6 +82,7 @@
 </div>
 </div>
 <script>
+
   $(".MAQ").click(function() {
     //alert("click");
     var codlab = $(this).attr("codlab");
@@ -126,41 +90,40 @@
     var codcol = $(this).attr("codcol");
     //alert(codcol);
     var estado = $(this).attr("estado");
-    $(this).removeClass("offPC");
     $(this).removeClass("onPC");
     $(this).removeClass("enabledPC");
 
-    if (estado == "D") {
-      $(this).addClass("offPC");
-      $(this).attr("estado", "O");
+    if (estado == "A") {
+      $(this).addClass("enabledPC");
+      $(".ImagenMaq ", this).addClass("hidden");
+      $(".ImagenPasio ", this).removeClass("hidden");
+      $("label ", this).text("_");
+      $(this).attr("estado", "I");
+      numerarMaquinas();
     } else {
-
+      $(".ImagenMaq ", this).removeClass("hidden");
+      $(".ImagenPasio ", this).addClass("hidden");
       $(this).addClass("onPC");
-      $(this).attr("estado", "D");
+      $(this).attr("estado", "A");
+      numerarMaquinas();
     }
     CambiarEstadoMaquina(codlab, codfil, codcol, $(this).attr("estado"));
   });
-
-  $(".boton_c_ina").click(function() {
-    var $hermano = $(this).siblings(".MAQ");
-    $hermano.removeClass("offPC");
-    $hermano.removeClass("onPC");
-    $hermano.removeClass("enabledPC");
-    $hermano.addClass("enabledPC");
-    $hermano.attr("estado", "I");
-    var codlab = $hermano.attr("codlab");
-    var codfil = $hermano.attr("codfil");
-    var codcol = $hermano.attr("codcol");
-    CambiarEstadoMaquina(codlab, codfil, codcol, "I");
-  });
-
+  numerarMaquinas();
+ function numerarMaquinas(){
+   var cont = 1;
+$(".onPC").each(function(){
+  $("label ", this).text( $(this).attr("alias") +"-"+cont);
+  cont ++;
+});
+ };
 
 
   function CambiarEstadoMaquina(lab, fil, col, est) {
     var urlbase = "<?php echo URLWS2; ?>";
     $.ajax({
         type: 'POST',
-        url: urlbase + 'CambiarEstadoReserva.php?lab=' + lab + '&fil=' + fil + '&col=' + col + '&est=' + est,
+        url: urlbase + 'CambiarEstadoMaquina.php?lab=' + lab + '&fil=' + fil + '&col=' + col + '&est=' + est,
         dataType: 'json'
       })
       .done(function(data) {
