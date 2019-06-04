@@ -88,7 +88,7 @@
                                                                                     else echo 'label-danger'; ?>"><?php if ($lb->lab_estado == 'A') echo 'Habilitado';
                                                                                                                             else echo 'Deshabilitado'; ?></label></td>
                                                             <td style="text-align:center; ">
-                                                                <!-- <button class="btn btn-sm btn-info" codigo="<?php echo $lb->lab_codigo; ?>" type="button"><span class="fa fa-eye"></span></button> -->
+                                                             <button class="btn btn-sm btn-info btn-xs boton_ver_maq" codigo="<?php echo $lb->lab_codigo; ?>" type="button"><span class="fa fa-laptop btn-xs"></span></button>
                                                                 <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $lb->lab_codigo ?>','<?php echo $lb->lab_codedf ?>','<?php echo $lb->lab_nombre ?>','<?php echo $lb->lab_acronimo ?>','<?php echo $lb->lab_filas ?>','<?php echo $lb->lab_columnas ?>','<?php echo $lb->lab_latitud ?>','<?php echo $lb->lab_longitud ?>','<?php echo $lb->lab_estado ?>');" title="Editar Laboratorio"><i class="fa fa-edit"></i></a>
                                                                 <a name="btnCrear" id="btnCrear" class="btn btn-info btn-xs" onclick="javascript: crear('<?php echo $lb->lab_codigo ?>','<?php echo $lb->lab_filas ?>','<?php echo $lb->lab_columnas ?>','<?php echo $lb->lab_acronimo ?>');" title="Crear o actualizar máquinas del Laboratorio"><i class="fa fa-desktop"></i>&nbsp;<i class="fa fa-refresh"></i></a>
                                                             </td>
@@ -210,7 +210,13 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+<!-- form oculto para mostrar el laboratorio por la maquina -->
+<form id='frm_maquinasLab' name="frm_maquinasLab" action="<?php echo base_url('Admin/Laboratorio/Maquinas'); ?>" method="POST">
+                    <input type="text" name="lblcodlab" id="lblcodlab" class="hidden lblcodlab">
+                    <input type="text" name="lblnomlab" id="lblnomlab" class="hidden lblcodlab">
+                            <input type="submit" name="btnMostrarMaq" id="btnMostrarMaq" value="Confirmar" class="btn btn-primary">
 
+                </form>
 <!-- modal form -->
 <div class="modal fade" id="modal-maq">
     <div class="modal-dialog">
@@ -332,6 +338,9 @@
             } else {
                 $('#todo').prop('checked', false);
             }
+        });
+        $(".boton_ver_maq").click(function(){
+            
         });
     });
 </script>

@@ -67,6 +67,7 @@ $route['Admin/Laboratorios'] = 'c_admin/Laboratorios/index';
 $route['Admin/Laboratorios/Guardar'] = 'c_admin/Laboratorios/guardarDatos';
 $route['Admin/Laboratorios/Borrar'] = 'c_admin/Laboratorios/borrarDatos';
 $route['Admin/Laboratorios/crearMaquinas'] = 'c_admin/Laboratorios/crearMaquinas';
+$route['Admin/Laboratorio/Maquinas'] = 'c_admin/ControlLaboratorioMaquinas/index';
 
 //Inicios
 $route['Admin/Inicio'] = 'c_admin/Inicio/index';
