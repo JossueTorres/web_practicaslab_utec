@@ -34,7 +34,7 @@
            <li><a href="<?php echo base_url('Admin/Inicio'); ?>"><i class="fa fa-home"></i>&nbsp;Inicio</a></li>
            <li><a href="<?php echo base_url('Admin/Edificios'); ?>"><i class="fa fa-building-o"></i>&nbsp;Edificios</a></li>
            <li><a href="<?php echo base_url('Admin/Laboratorios'); ?>"><i class="fa fa-desktop"></i>&nbsp;Laboratorios</a></li>
-           <li><a href="<?php echo base_url(); ?>c_admin/EncargadoLaboratorio"><i class="fa fa-user"></i>&nbsp;Encargados</a></li>
+           <li><a href="<?php echo base_url('Admin/Encargados'); ?>"><i class="fa fa-user"></i>&nbsp;Encargados</a></li>
            <!-- <li><a href="<?php echo base_url(); ?>c_admin/Inicio"><i class="fa fa-home"></i>&nbsp;Mi Perfil</a></li> -->
 
            <li><a href="<?php echo base_url('Logout'); ?>"><i class="fa fa-sign-out"></i>&nbsp;Cerrar Sesión</a></li>

@@ -264,7 +264,7 @@
       });
       $(".btnGoogle").click(function(e) {
         SignInGoogle()
-      });
+      });      
     });
   </script>
 </body>

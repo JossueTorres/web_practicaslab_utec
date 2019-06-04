@@ -1,9 +1,6 @@
 <!-- /page content -->
-
-
 <div class="right_col" role="main">
   <div class="">
-
     <div class="clearfix"></div>
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -59,10 +56,6 @@
                           <?php }
                       }
                     }  ?>
-
-
-
-
                     </tbody>
                   </table>
                 </div>
@@ -72,23 +65,9 @@
 
           </div>
         </div>
-
-
-
-
-
-
-
-
         <!-- page content -->
 
         <!-- /page content -->
-
-
-
-
-
-
       </div>
     </div>
   </div>
@@ -269,13 +248,13 @@
                       foreach ($resp as $maq) {
                         ?>
                         <!-- <tr> 
-                              <td>codlab: <?php echo $maq->maq_codlab; ?></td>
-                              <td>fila:  <?php echo $maq->maq_fila; ?></td>
-                              <td>columna: <?php echo $maq->maq_columna; ?></td>
-                              <td>maq estado: <?php echo $maq->maq_estado_maquina; ?></td>
-                              <td>res estado: <?php echo $maq->maq_estado_reserva; ?></td>
-                              <td>alias: <?php echo $maq->maq_alias; ?></td>
-                            </tr>-->
+                                    <td>codlab: <?php echo $maq->maq_codlab; ?></td>
+                                    <td>fila:  <?php echo $maq->maq_fila; ?></td>
+                                    <td>columna: <?php echo $maq->maq_columna; ?></td>
+                                    <td>maq estado: <?php echo $maq->maq_estado_maquina; ?></td>
+                                    <td>res estado: <?php echo $maq->maq_estado_reserva; ?></td>
+                                    <td>alias: <?php echo $maq->maq_alias; ?></td>
+                                  </tr>-->
 
                         <?php
                         if ($cont == 1) {
