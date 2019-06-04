@@ -95,10 +95,15 @@ $route['Edificio/Listado']['POST'] = 'apis/admin/Edificio_api/listEdificios';
 $route['Edificio/guardarDatos']['POST'] = 'apis/admin/Edificio_api/guardarDatos';
 $route['Edificio/borrarDatos']['POST'] = 'apis/admin/Edificio_api/borrarDatos';
 
-//Crud Asignacion
+//Crud Configuracion
 $route['Config/Listado']['POST'] = 'apis/admin/Configuracion_api/listConfiguracion';
 $route['Config/guardarDatos']['POST'] = 'apis/admin/Configuracion_api/guardarDatos';
 $route['Config/borrarDatos']['POST'] = 'apis/admin/Configuracion_api/borrarDatos';
+
+//Crud Exclusion
+$route['Exclu/Listado']['POST'] = 'apis/admin/Exclusion_api/listExclusion';
+$route['Exclu/guardarDatos']['POST'] = 'apis/admin/Exclusion_api/guardarDatos';
+$route['Exclu/borrarDatos']['POST'] = 'apis/admin/Exclusion_api/borrarDatos';
 
 //Crud Asignacion
 $route['Asignacion/Listado']['POST'] = 'apis/admin/Asignacion_api/index';

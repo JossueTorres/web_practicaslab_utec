@@ -18,9 +18,9 @@
                     <option value="">(Todos)</option>
                     <?php if (!empty($lst3)) {
                       foreach ($lst3 as $lab) { ?>
-                                            <option value="<?php echo $lab->lab_codigo ?>"><?php echo $lab->lab_nombre ?></option>
-                                <?php }
-                            }  ?>
+                                                                    <option value="<?php echo $lab->lab_codigo ?>"><?php echo $lab->lab_nombre ?></option>
+                                            <?php }
+                                        }  ?>
                   </select>
                 </div>
                 <div class="col-xs-3">
@@ -56,7 +56,7 @@
                           <th>D</th>
                           <th>ACCIONES</th>
                           <th style="text-align:center;">
-                            <div class="center-block"><input type="checkbox" name="todo" id="todo" class="checkbox" />&nbsp;<button class="btn btn-danger btn-xs pull-right" onclick="return confimar('borrar');"><label class="fa fa-trash"></label></button></div>
+                            <div class="center-block"><input type="checkbox" name="todo" id="todo" class="checkbox" />&nbsp;<button type="submit" class="btn btn-danger btn-xs pull-right" onclick="return confimar('borrar');"><label class="fa fa-trash"></label></button></div>
                           </th>
                         </tr>
                       </thead>
@@ -88,7 +88,8 @@
                               <td><label class="fa <?php if ($cop->cop_domingo == 2) echo "fa-check bg-green";
                                                     else echo "fa-square red"; ?>"></label></td>
                               <td class="text-center">
-                                <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $cop->cop_codigo ?>','<?php echo $fini ?>','<?php echo $ffin ?>','<?php echo $hini ?>','<?php echo $hfin ?>','<?php echo $cop->cop_lunes; ?>','<?php echo $cop->cop_martes; ?>','<?php echo $cop->cop_miercoles; ?>','<?php echo $cop->cop_jueves; ?>','<?php echo $cop->cop_viernes; ?>','<?php echo $cop->cop_sabado; ?>','<?php echo $cop->cop_domingo; ?>');">Modificar</a>
+                                <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $cop->cop_codigo ?>','<?php echo $fini ?>','<?php echo $ffin ?>','<?php echo $hini ?>','<?php echo $hfin ?>','<?php echo $cop->cop_lunes; ?>','<?php echo $cop->cop_martes; ?>','<?php echo $cop->cop_miercoles; ?>','<?php echo $cop->cop_jueves; ?>','<?php echo $cop->cop_viernes; ?>','<?php echo $cop->cop_sabado; ?>','<?php echo $cop->cop_domingo; ?>');"><i class="fa fa-edit"></i></a>
+                                <a name="btnListado" id="btnListado" class="btn btn-info btn-xs btnListado"><i class="fa fa-list"></i></a>
                               </td>
                               <td style="text-align:center;">
                                 <input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php echo $cop->cop_codigo; ?>" />
@@ -130,9 +131,9 @@
                   <option value="">(Seleccione Uno)</option>
                   <?php if (!empty($lst2)) {
                     foreach ($lst2 as $edf) { ?>
-                                          <option value="<?php echo $edf->edf_codigo ?>"><?php echo $edf->edf_nombre ?></option>
-                              <?php }
-                          }  ?>
+                                                                  <option value="<?php echo $edf->edf_codigo ?>"><?php echo $edf->edf_nombre ?></option>
+                                          <?php }
+                                      }  ?>
                 </select>
               </label>
             </div>
@@ -209,6 +210,22 @@
   <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+
+<div class="modal fade" id="modal-listado">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">DETALLE PRÁCTICA</h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   function mostrarModal() {
     $("#modal-edificio").modal('show');
@@ -231,6 +248,7 @@
   };
 
   function edit(c, fi, ff, hi, hf, l, m, x, j, v, s, d) {
+    cleanFields();
     $('.codcop').attr("value", c);
     $('.codlab').val("<?php echo $this->session->userdata('usrlab') ?>");
     $('.txtFini').val(fi);
@@ -375,7 +393,20 @@
     }
   }
 
+  function crearListado(fi, hi, ff, hf, l, m, x, j, v, s, d) {
+    var fini = moment(fi, 'DD-MM-YYYY');
+    var ffin = moment(ff, 'DD-MM-YYYY');
+    // for (var d = new Date(2012, 0, 1); d <= now; d.setDate(d.getDate() + 1)) {
+    //   alert(d);
+    // }
+    // for (var d = new Date(fini); d <= new Date(ffin); d.setDate(d.getDate() + 1)) {
+    //   alert(d.getDate());
+    // }
+  }
+
   $(document).ready(function() {
+
+    crearListado('03-06-2019', '10-06-2019');
 
     $('.txtDatePicker').datepicker({
       dateFormat: 'dd-mm-yy'

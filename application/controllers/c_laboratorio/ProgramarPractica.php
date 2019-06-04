@@ -157,8 +157,8 @@ class ProgramarPractica extends CI_Controller
 		$ids = $this->input->post("chkBorrar");
 		//_________________________________________________________________
 		//Recojo y arreglo los parametros
-		$url = URLWS . 'Edificio/borrarDatos';
-		//_________________________________________________________________
+		$url = URLWS . 'Config/borrarDatos';
+		//_________________________________________________________________		
 
 		//_________________________________________________________________
 		//creamos nuevo recurso cURL y su Conf (Esto mejor que ni se toque siempre va)
@@ -175,7 +175,7 @@ class ProgramarPractica extends CI_Controller
 		//_________________________________________________________________
 
 		foreach ($ids as $id) {
-			$postData =  'cod=' . $id . '&nom=&acr=&est=';
+			$postData =  'cod=' . $id . '&lab=0&fini=&ffin=&l=0&m=0&x=0&j=0&v=0&s=0&d=0';
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
 			curl_exec($ch);
 		}
@@ -186,6 +186,6 @@ class ProgramarPractica extends CI_Controller
 		//cerramos el Curl
 		curl_close($ch);
 		//_________________________________________________________________
-		header('location:' . base_url('Edificios'));
+		header('location:' . base_url('Lab/Practicas'));
 	}
 }

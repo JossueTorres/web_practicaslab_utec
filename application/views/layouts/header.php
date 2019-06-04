@@ -72,7 +72,7 @@
       storageBucket: "practicas-df991.appspot.com",
       messagingSenderId: "1057359215817",
       appId: "1:1057359215817:web:e14cde41471629df"
-      
+
       //Alexis
       // apiKey: "AIzaSyBpHUZPHz4Vzm_tazZjBVxcHI_U5NfyvHA",
       // authDomain: "practicas-df991.firebaseapp.com",
