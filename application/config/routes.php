@@ -62,6 +62,11 @@ $route['Admin/Edificios'] = 'c_admin/Edificio/index';
 $route['Admin/Edificios/Guardar'] = 'c_admin/Edificio/guardarDatos';
 $route['Admin/Edificios/Borrar'] = 'c_admin/Edificio/borrarDatos';
 
+//Crud Edificios
+$route['Admin/Encargados'] = 'c_admin/EncargadoLaboratorio/index';
+$route['Admin/Encargados/Guardar'] = 'c_admin/EncargadoLaboratorio/guardarDatos';
+$route['Admin/Encargados/Borrar'] = 'c_admin/EncargadoLaboratorio/borrarDatos';
+
 //Crud Laboratorios
 $route['Admin/Laboratorios'] = 'c_admin/Laboratorios/index';
 $route['Admin/Laboratorios/Guardar'] = 'c_admin/Laboratorios/guardarDatos';

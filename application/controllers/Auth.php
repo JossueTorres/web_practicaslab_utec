@@ -8,39 +8,61 @@ class Auth extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-			
 	}
 
 	//funcion principal
 	public function index()
-	{		
+	{
 		//verificar la session de usuario
 		$this->load->view('login');
 		$this->load->library('session');
 		if ($this->session->userdata()) {
 			$tip = (int)$this->session->userdata("usrtipo");
-			if($tip == 1){
+			if ($tip == 1) {
 				redirect(base_url('Admin/Inicio'));
-			}else if($tip == 2){
+			} else if ($tip == 2) {
 				redirect(base_url('Lab/Inicio'));
-			}else if($tip == 4){
+			} else if ($tip == 4) {
 				redirect(base_url('Alumno/Inicio'));
 			}
-		}	
+		}
 	}
 
-	public function login2(){
+	public function login2()
+	{
+		$varablequevienedeJS = $_GET['c'];
+		// var_dump($varablequevienedeJS);
+		// $varablequevienedeJS = "6wxgIG0XN3XuADxgVLkZ5da3G2l2";
+		$jsonUrl = "https://applab-9034b.firebaseio.com/Usuarios/" . $varablequevienedeJS . ".json";
 
-		$varablequevienedeJS="6wxgIG0XN3XuADxgVLkZ5da3G2l2";
-		$jsonUrl = "https://applab-9034b.firebaseio.com/Usuarios/".$varablequevienedeJS.".json";
-
-		$data = file_get_contents($jsonUrl);
-		$products = json_decode($data, true);
-		
-		foreach ($products as $product) {
-			print_r($product);
-		}
-	
+		$result = json_decode(file_get_contents($jsonUrl));
+		$codtip = $result->rol;
+		if (empty($codtip)) {
+			$codtip = "alumno";
+		}else{$codlab = 1;}		
+		$correo = $result->correo;
+		$nombre = $result->nombre;		
+		// $products = json_decode($data, true);
+		// var_dump($codtip);
+		// foreach ($products as $product) {
+		// 	print_r($product);
+		// }
+		$data  = array(
+			'usrcorreo' => $correo,
+			'usrnombre' => $nombre,
+			'usrtipo' => $codtip,
+			'usrlab' => $codlab,
+			// 'usrlabnom' => $labnombre,
+			'login' => true,
+		);
+		$this->session->set_userdata($data);
+		// $user =  $this->session->userdata("usuario");
+		if ($codtip == "admin")
+			redirect(base_url('Admin/Inicio'));
+		else if ($codtip == "encargado")
+			redirect(base_url('Lab/Inicio'));
+		else
+			redirect(base_url('Alumno/Inicio'));
 	}
 
 	public function login()

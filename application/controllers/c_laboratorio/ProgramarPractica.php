@@ -7,11 +7,11 @@ class ProgramarPractica extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$tip = (int)$this->session->userdata("usrtipo");
+		$tip = $this->session->userdata("usrtipo");
 		//verificar la session de usuario
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
-		} else if ($tip != 2) {
+		} else if ($tip != 'encargado') {
 			redirect(base_url());
 		}
 	}
@@ -74,7 +74,13 @@ class ProgramarPractica extends CI_Controller
 	public function guardarDatos()
 	{
 		$chk = $this->input->post('chkD');
-		$l = 1; $m = 1; $x= 1; $j = 1; $v = 1; $s = 1; $d = 1;
+		$l = 1;
+		$m = 1;
+		$x = 1;
+		$j = 1;
+		$v = 1;
+		$s = 1;
+		$d = 1;
 		foreach ($chk as $val) {
 			if ($val == 1) {
 				$l = 2;
@@ -97,7 +103,7 @@ class ProgramarPractica extends CI_Controller
 			if ($val == 7) {
 				$d = 2;
 			}
-		}		
+		}
 		// var_dump($data);
 		//_________________________________________________________________
 		//Recojo y arreglo los parametros		
@@ -108,13 +114,13 @@ class ProgramarPractica extends CI_Controller
 			'hini' => $this->input->post('txtHini'),
 			'ffin' => $this->input->post('txtFfin'),
 			'hfin' => $this->input->post('txtHfin'),
-			'l'=> $l,
-			'm'=> $m,
-			'x'=> $x,
-			'j'=> $j,
-			'v'=> $v,
-			's'=> $s,
-			'd'=> $d,
+			'l' => $l,
+			'm' => $m,
+			'x' => $x,
+			'j' => $j,
+			'v' => $v,
+			's' => $s,
+			'd' => $d,
 		);
 		$postData = '';
 		//Creamos arreglo nombre/valor separado por &

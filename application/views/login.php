@@ -58,21 +58,21 @@
   <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
-      apiKey: "AIzaSyBpHUZPHz4Vzm_tazZjBVxcHI_U5NfyvHA",
-      authDomain: "practicas-df991.firebaseapp.com",
-      databaseURL: "https://practicas-df991.firebaseio.com",
-      projectId: "practicas-df991",
-      storageBucket: "practicas-df991.appspot.com",
-      messagingSenderId: "1057359215817",
-      appId: "1:1057359215817:web:e14cde41471629df"
+      // apiKey: "AIzaSyBpHUZPHz4Vzm_tazZjBVxcHI_U5NfyvHA",
+      // authDomain: "practicas-df991.firebaseapp.com",
+      // databaseURL: "https://practicas-df991.firebaseio.com",
+      // projectId: "practicas-df991",
+      // storageBucket: "practicas-df991.appspot.com",
+      // messagingSenderId: "1057359215817",
+      // appId: "1:1057359215817:web:e14cde41471629df"
       //Alexis
-      //   apiKey: "AIzaSyB4JQ_A4o6sfVloiwG42t8xB_BwFgm3dXI",
-      // authDomain: "applab-9034b.firebaseapp.com",
-      // databaseURL: "https://applab-9034b.firebaseio.com",
-      // projectId: "applab-9034b",
-      // storageBucket: "applab-9034b.appspot.com",
-      // messagingSenderId: "998271382901",
-      // appId: "1:998271382901:web:b64304d5e40c14aa"
+      apiKey: "AIzaSyB4JQ_A4o6sfVloiwG42t8xB_BwFgm3dXI",
+      authDomain: "applab-9034b.firebaseapp.com",
+      databaseURL: "https://applab-9034b.firebaseio.com",
+      projectId: "applab-9034b",
+      storageBucket: "applab-9034b.appspot.com",
+      messagingSenderId: "998271382901",
+      appId: "1:998271382901:web:b64304d5e40c14aa"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -84,7 +84,7 @@
     <div class="MainCont">
       <h1 class="Titulo">Practicas</h1>
       <div class="panel panel-primary">
-        <form action="<?php echo base_url('Auth/login'); ?>" method="post" class="" data-type-form="login" autocomplete="off">
+        <form action="<?php echo base_url('Auth/login2'); ?>" method="post" class="" data-type-form="login" autocomplete="off">
           <div class="panel-header">
             <h4 class="onH">Iniciar Sesion</h4>
           </div>
@@ -127,6 +127,7 @@
 
   <script>
     var clickeado = false;
+    var varidU = '';
 
     function toggleSignIn() {
       if (firebase.auth().currentUser) {
@@ -137,29 +138,25 @@
       var email = $(".txtUsr").val();
       var password = $(".txtPass").val();
       if (email.length < 4) {
-        alert('Ingrese un Correo.');
+        swal({title:'Demasiado corto', text:'Las credenciales ingresadas con muy cortas al parecer', type:'error'});
         return false;
       }
-      if (password.length < 4) {
-        alert('Ingrese una contraseña.');
+      if (password.length < 6) {
+        swal({title:'La contraseña es incorrecta', text:'La contraseña ingresada para el usuario es incorrecta', type:'error'});
         return false;
       }
       // Sign in with email and pass.
       // [START authwithemail]
       firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
-
         //aqui 
         var user = firebase.auth().currentUser;
-
         //id que vas a pasar a php
-        var uid = user.uid;
-
-        if (user)
-          console.log("ok", uid);
-        else
-          console.log("no");
-
-
+        varidU = user.uid;
+        // if (user) {
+        //   console.log("ok", varidU);
+        // } else {
+        //   console.log("no");
+        // }
 
         // alert("Logeado");
         // return true;
@@ -170,11 +167,11 @@
         var errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode === 'auth/wrong-password') {
-          alert('Contraseña Incorrecta.');
+          swal({title:'La contraseña es incorrecta', text:'La contraseña ingresada para el usuario es incorrecta', type:'error'});
         } else if ('auth/user-not-found') {
-          alert("El usuario no existe");
+          swal({title:'No se encontró al usuario', text:'Este usuario no se encuentra dentro de la base de datos', type:'error'});
         } else {
-          alert(errorCode + '\n' + errorMessage);
+          swal(errorCode + '\n' + errorMessage);
         }
         // alert(error + '\n'+ 'No se Ingresó');
         return false;
@@ -191,6 +188,8 @@
         // alert(clickeado);
         if (clickeado) {
           // $(this).unbind('submit').submit();
+          e.preventDefault();
+          window.location.replace("<?php echo base_url('Auth/login2') ?>?c=" + varidU);
         } else {
           e.preventDefault();
         }

@@ -8,12 +8,11 @@ class Ciclo extends CI_Controller
 	{
 		parent::__construct();
 		//verificar la session de usuario
-		//verificar la session de usuario
-		$tip = (int)$this->session->userdata("usrtipo");
+		$tip = $this->session->userdata("usrtipo");
 		//verificar la session de usuario
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
-		} else if ($tip != 1) {
+		} else if ($tip != 'admin') {
 			redirect(base_url());
 		}
 	}

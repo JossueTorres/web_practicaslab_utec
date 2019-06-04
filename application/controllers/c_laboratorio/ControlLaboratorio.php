@@ -7,11 +7,11 @@ class ControlLaboratorio extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$tip = (int)$this->session->userdata("usrtipo");
+		$tip = $this->session->userdata("usrtipo");
 		//verificar la session de usuario
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
-		} else if ($tip != 2) {
+		} else if ($tip != 'encargado') {
 			redirect(base_url());
 		}
 	}
