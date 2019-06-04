@@ -86,7 +86,8 @@
       <div class="panel panel-primary">
         <form action="<?php echo base_url('Auth/login2'); ?>" method="post" class="" data-type-form="login" autocomplete="off">
           <div class="panel-header">
-            <h4 class="onH">Iniciar Sesion</h4>
+            <h4 class="onH">Iniciar Sesion</h4><br>
+            <small>FIREBASE AUTHENTICATION</small>
           </div>
           <div class="panel-body">
             <input name='txtUsr' id='txtUsr' type="text" placeholder="Usuario" class="form-control txtUsr" /><br>

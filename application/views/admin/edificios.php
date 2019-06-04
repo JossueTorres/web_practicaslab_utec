@@ -56,7 +56,7 @@
                                                       else echo 'label-danger'; ?>"><?php if ($ed->edf_estado == 'A') echo 'Habilitado';
                                                                                       else echo 'Deshabilitado'; ?></label></td>
                               <td class="text-center">
-                                <a name="btnEditar" id="btnEditar" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $ed->edf_codigo ?>','<?php echo $ed->edf_nombre ?>','<?php echo $ed->edf_acronimo ?>','<?php echo $ed->edf_estado ?>');">Modificar</a>
+                                <a name="btnEditar" id="btnEditar" title="Editar Registros" class="btn btn-info btn-xs" onclick="javascript: edit('<?php echo $ed->edf_codigo ?>','<?php echo $ed->edf_nombre ?>','<?php echo $ed->edf_acronimo ?>','<?php echo $ed->edf_estado ?>');"><i class="fa fa-edit"></i></a>
                               </td>
                               <td style="text-align:center;">
                                 <input type="checkbox" name="chkBorrar[]" class="checkbox" value="<?php echo $ed->edf_codigo; ?>" />
