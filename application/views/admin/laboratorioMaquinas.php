@@ -28,7 +28,10 @@
 </style>
 
 <div class="right_col" role="main">
-  <h1><?php echo $nombre ?></h1>
+  <h1><?php  foreach ($lista2 as $resp) {
+    foreach ($lista2 as $resp) {
+     echo $resp;
+    } }?></h1>
   <div class="">
     <div class="clearfix"></div>
     <div class="row">
@@ -41,7 +44,9 @@
           <div class="x_content" style="text-align: center;">
             <table class=" table-responsive table-striped table">
               <tbody>
-                <?php if (!empty($resp)) {
+                <?php 
+                foreach ($lista1 as $resp) {
+                if (!empty($resp)) {
                     $cont = 1;
                     $filaActual = 0;
                     foreach ($resp as $maq) {
@@ -102,7 +107,7 @@
               
             }
           }
-        }  ?>
+        } } ?>
           </tr>
           </tbody>
           </table>

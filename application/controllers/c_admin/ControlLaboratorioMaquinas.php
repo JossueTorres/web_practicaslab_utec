@@ -24,8 +24,8 @@ class ControlLaboratorioMaquinas extends CI_Controller
 			$nombre = $this->input->post("lblnomlab");
 			//$_param = $val->p;
 			
-				$codigo = 1;
-				$nombre = "benito";
+				//$codigo = 1;
+				//$nombre = "benito";
 			
 				$_param = array(
 
@@ -74,9 +74,9 @@ class ControlLaboratorioMaquinas extends CI_Controller
 
 			//Obtenemos el resultado
 			//_________________________________________________________________
-			$data = json_decode(curl_exec($ch));
+			$data["lista1"] = json_decode(curl_exec($ch));
 			//cerramos el Curl
-			//$data["nombre"] =array( "nomb","cod");
+			$data["lista2"] =array($nombre);
 			//_________________________________________________________________
 			//
 		
